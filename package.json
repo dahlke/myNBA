@@ -1,0 +1,13 @@
+{
+  "name": "nba_stats",
+  "author": "Neil Dahlke",
+  "version": "0.0.1",
+  "description": "",
+  "repository": "github.com/dahlke/nba_stats",
+  "devDependencies": {
+  },
+  "dependencies": {
+      "nba": "4.2.2",
+      "mysql": "2.15.0"
+  }
+}

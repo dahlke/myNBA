@@ -27,16 +27,17 @@ CREATE TABLE player (
 
 CREATE TABLE team (
 	id int,
+    season_yr varchar(16),
+	city varchar(32),
 	name varchar(32),
 	abbreviation varchar(3),
-	city varchar(32),
-    primary key (id)
-);
-
-CREATE TABLE player_simple (
-	id int,
-	first_name varchar(32),
-	last_name varchar(32),
-	team_id int,
+    conference varchar(8),
+    division varchar(16),
+    wins int,
+    losses int,
+    conference_rank int,
+    division_rank int,
+    min_year int,
+    max_year int,
     primary key (id)
 );

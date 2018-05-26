@@ -8,6 +8,8 @@
   },
   "dependencies": {
       "nba": "4.2.2",
-      "mysql": "2.15.0"
+      "mkdirp": "0.5.1",
+      "mysql": "2.15.0",
+      "moment": "2.22.1"
   }
 }

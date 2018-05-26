@@ -41,3 +41,11 @@ CREATE TABLE team (
     max_year int,
     primary key (id)
 );
+
+CREATE TABLE game (
+
+);
+
+CREATE TABLE game_line_score (
+
+);

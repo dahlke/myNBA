@@ -1,4 +1,4 @@
-function saveTeamToDatabase (connection, team) {
+function saveTeam (connection, team) {
     var insertQuery = `
     INSERT INTO nba.team VALUES (
         ${team.teamId},
@@ -24,7 +24,7 @@ function saveTeamToDatabase (connection, team) {
     });
 }
 
-function savePlayerToDatabase (connection, playerDetail) {
+function savePlayer (connection, playerDetail) {
     const playerInfo = playerDetail.commonPlayerInfo[0];
     const playerJersey = playerInfo.jersey || "NULL";
     const playerDraftYear = playerInfo.draftYear == "Undrafted" ? "NULL" : playerInfo.draftYear;
@@ -63,18 +63,18 @@ function savePlayerToDatabase (connection, playerDetail) {
     });
 }
 
-function saveGameLineScoreToDatabase (connection, gameLineScore) {
+function saveGameLineScore (connection, gameLineScore) {
 
 }
 
-function saveGameHeaderToDatabase (connection, gameHeader) {
+function saveGameHeader (connection, gameHeader) {
 
 }
 
 
 module.exports = {
-    "saveTeamToDatabase": saveTeamToDatabase,
-    "savePlayerToDatabase": savePlayerToDatabase,
-    "saveGameLineScoreToDatabase": saveGameLineScoreToDatabase,
-    "saveGameHeaderToDatabase": saveGameHeaderToDatabase
+    saveTeam: saveTeam,
+    savePlayer: savePlayer,
+    saveGameLineScore: saveGameLineScore,
+    saveGameHeader: saveGameHeader
 }

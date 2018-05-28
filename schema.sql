@@ -42,6 +42,7 @@ CREATE TABLE team (
     primary key (id)
 );
 
+/*
 CREATE TABLE game (
 
 );
@@ -49,3 +50,4 @@ CREATE TABLE game (
 CREATE TABLE game_line_score (
 
 );
+*/

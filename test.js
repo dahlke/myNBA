@@ -1,7 +1,7 @@
 const util = require("util");
 const NBA = require("nba");
 const moment = require('moment');
-const sqlPool = require('./nba_stats/sqlPool');
+const sqlPool = require('./nbaStats/sqlPool');
 
 const API_DATE_FMT = 'MM/DD/YYYY';
 const NBA_FOUNDED_DATE = '06/06/1946';
@@ -71,9 +71,6 @@ sqlPool.getConnection((err, connection) => {
     console.log(err, connection);
     const playerExistsQuery = `SELECT id FROM nba.player WHERE id=${_LAURI};`;
     connection.query(playerExistsQuery, function (error, results, fields) {
-        console.log('release it');
         connection.release();
-        console.log('released');
-        console.log(error, results);
     });
 });

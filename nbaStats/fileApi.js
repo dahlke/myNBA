@@ -1,29 +1,38 @@
-const fs = require('fs');
-const mkdirp = require('mkdirp');
-const getDirName = require('path').dirname;
+const fs = require("fs");
+const mkdirp = require("mkdirp");
+const getDirName = require("path").dirname;
+
+function syncJsonExists(filePathArray) {
+    const filePath = `${filePathArray.join("/")}.json`;
+    let exists = false;
+    if (fs.existsSync(filePath)) {
+        exists = true;
+    }
+    return exists;
+}
 
 function persistJSON (filePathArray, payload) {
-    const filePath = `${filePathArray.join('/')}.json`;
+    const filePath = `${filePathArray.join("/")}.json`;
     const dirPath = getDirName(filePath);
 
     mkdirp(dirPath, function (err) {
         if (!err){
             fs.writeFile(filePath, JSON.stringify(payload), {
-                flag: 'wx'
+                flag: "wx"
             }, (err) => {
                 if (err) {
                     if (err.code != "EEXIST") {
-                        console.log('Error writing to file system', err);
+                        console.error("Error writing to file system", err);
                     }
                 }
             });
         } else {
-            console.log(err);
+            console.error(err);
         }
     });
 }
 
-
 module.exports = {
-    persistJSON: persistJSON
+    persistJSON: persistJSON,
+    syncJsonExists: syncJsonExists
 }

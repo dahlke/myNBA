@@ -65,7 +65,6 @@ NBA.stats.teamHistoricalLeaders({ TeamID: _BULLS }).then((response) => {
 NBA.stats.shots({ PlayerID: _LAURI }).then((result) => {
     console.log(result);
 });
-*/
 
 sqlPool.getConnection((err, connection) => {
     console.log(err, connection);
@@ -74,3 +73,5 @@ sqlPool.getConnection((err, connection) => {
         connection.release();
     });
 });
+
+*/

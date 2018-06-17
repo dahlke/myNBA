@@ -4,33 +4,27 @@ const NBA = require("nba");
 const moment = require("moment");
 const fileApi = require("./nbaStats/fileApi");
 
-const API_RATE_LIMIT_WAIT_MIN_MS = 3 * 1000;
+const API_RATE_LIMIT_WAIT_MIN_MS = 1 * 1000;
 const API_DATE_FMT = "MM/DD/YYYY";
 const NBA_FOUNDED_DATE = "06/06/1946";
 const NBA_SEASON_MONTHS = [1, 2, 3, 4, 5, 6, 10, 11, 12];
+
 let start = moment();
 let fmtStart = start.format(API_DATE_FMT);
 let dateInSeason = false;
 
-/*
-
-// TODO: Check if already on filesystem and in database.
-console.log("Beginning NBA Data API download.");
-for (i in NBA.teams) {
-    const team = NBA.teams[i];
-    NBA.stats.teamInfoCommon({ TeamID: team.teamId }).then((response) => {
+function requestTeam (teamId, teamPath)  {
+    NBA.stats.teamInfoCommon({ TeamID: teamId }).then((response) => {
         const teamDetail = response.teamInfoCommon[0];
-        fileApi.persistJSON(["json", "apiTeamInfoCommon", "teamDetail", teamDetail.teamId], response);
+        fileApi.persistJSON(teamPath, response);
+        console.log(`${response.teamInfoCommon[0].teamName} saved.`);
     });
 }
 
-*/
-
-
-function requestPlayer (playerId)  {
-    NBA.stats.playerInfo({ PlayerID: playerId }).then((playerDetail) => {
-        fileApi.persistJSON(["json", "apiPlayerInfo", "commonPlayerInfo", playerId], playerDetail);
-        console.log(`${playerDetail.commonPlayerInfo[0].displayFirstLast} saved.`);
+function requestPlayer (playerId, playerPath)  {
+    NBA.stats.playerInfo({ PlayerID: playerId }).then((response) => {
+        fileApi.persistJSON(playerPath, response);
+        console.log(`${response.commonPlayerInfo[0].displayFirstLast} saved.`);
     });
 }
 
@@ -58,15 +52,39 @@ function requestScoreboard (gameDate)  {
     });
 }
 
+function loopTeams(remainingTeams) {
+    const team = remainingTeams.shift();
+
+    if (!!team) {
+        const teamId = team.teamId;
+        const teamPath = ["json", "apiTeamInfoCommon", teamId];
+        const teamDetailExists = fileApi.syncJsonExists(teamPath);
+        if (!teamDetailExists) {
+            setTimeout(() => {
+                requestTeam(teamId, teamPath);
+                console.log(`${team.teamName} requested...`);
+                if (remainingTeams.length != 0) {
+                    console.log(`Estimated time remaining: ${(API_RATE_LIMIT_WAIT_MIN_MS * remainingTeams.length) / 1000}s ...`)
+                    loopTeams(remainingTeams);
+                }
+            }, API_RATE_LIMIT_WAIT_MIN_MS);
+        } else {
+            console.log(`Team detail for ${team.teamName} already exists.`);
+            loopTeams(remainingTeams);
+        }
+    }
+}
+
 function loopPlayers(remainingPlayers) {
     const player = remainingPlayers.shift();
+
     if (!!player) {
         const playerId = player.playerId;
         const playerPath = ["json", "apiPlayerInfo", "commonPlayerInfo", playerId];
         const playerDetailExists = fileApi.syncJsonExists(playerPath);
         if (!playerDetailExists) {
             setTimeout(() => {
-                requestPlayer(playerId);
+                requestPlayer(playerId, playerPath);
                 console.log(`${player.fullName} requested...`);
                 if (remainingPlayers.length != 0) {
                     console.log(`Estimated time remaining: ${(API_RATE_LIMIT_WAIT_MIN_MS * remainingPlayers.length) / 1000}s ...`)
@@ -77,7 +95,6 @@ function loopPlayers(remainingPlayers) {
             console.log(`Player info for ${player.fullName} already exists.`);
             loopPlayers(remainingPlayers);
         }
-    } else {
     }
 }
 
@@ -99,10 +116,16 @@ function loopScoreboards() {
 
 myNBA
   .version('0.1.0')
+  .option('-t, --teams', 'Request team detail from NBA API')
   .option('-p, --players', 'Request player detail from NBA API')
   .option('-s, --scores', 'Request score detail from NBA API')
-  .option('-t, --teams', 'Request team detail from NBA API')
   .parse(process.argv);
+
+if (myNBA.teams) {
+    console.log(`Requesting all uncollected NBA team data.`);
+    const allTeams = NBA.teams.slice(0);
+    loopTeams(allTeams);
+}
 
 if (myNBA.players) {
     console.log(`Requesting all uncollected NBA player data.`);
@@ -116,8 +139,3 @@ if (myNBA.scores) {
     console.log("TODO");
 }
 
-if (myNBA.teams) {
-    console.log(`Requesting all uncollected NBA team data.`);
-    // loopTeams();
-    console.log("TODO");
-}

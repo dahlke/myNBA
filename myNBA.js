@@ -2,7 +2,7 @@ const myNBA = require("commander");
 const util = require("util");
 const NBA = require("nba");
 const moment = require("moment");
-const fileApi = require("./nbaStats/fileApi");
+const fileApi = require("./myNBA/fileApi");
 
 const API_RATE_LIMIT_WAIT_MIN_MS = 1 * 1000;
 const API_DATE_FMT = "MM/DD/YYYY";

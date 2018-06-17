@@ -1,5 +1,5 @@
 const fs = require('fs');
-const dbApi = require("./nbaStats/dbApi");
+const dbApi = require("./myNBA/dbApi");
 
 
 function migratePlayersToDatabase(dirPathArray) {
@@ -13,4 +13,16 @@ function migratePlayersToDatabase(dirPathArray) {
     });
 }
 
+function migrateTeamsToDatabase(dirPathArray) {
+    const dirPath = `${dirPathArray.join("/")}`;
+
+    fs.readdirSync(dirPath).forEach(file => {
+        const path = `${dirPath}/${file}`;
+        const teamDataRaw = fs.readFileSync(path, 'utf8');
+        const teamDataJson = JSON.parse(teamDataRaw);
+        dbApi.saveTeam(teamDataJson);
+    });
+}
+
 migratePlayersToDatabase(['json', 'apiPlayerInfo', 'commonPlayerInfo']);
+migrateTeamsToDatabase(['json', 'apiTeamInfoCommon']);

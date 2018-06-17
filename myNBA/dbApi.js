@@ -1,30 +1,40 @@
 const sqlPool = require("./sqlPool");
 
-function saveTeam (connection, team) {
-    var insertQuery = `
-        INSERT INTO nba.team VALUES (
-            ${team.teamId},
-            "${team.seasonYear}",
-            "${team.teamCity}",
-            "${team.teamName}",
-            "${team.teamAbbreviation}",
-            "${team.teamConference}",
-            "${team.teamDivision}",
-            "${team.w}",
-            "${team.l}",
-            "${team.confRank}",
-            "${team.divRank}",
-            "${team.minYear}",
-            "${team.maxYear}"
-        ) ON DUPLICATE KEY UPDATE name=name
-    `;
+function saveTeam (teamRawJson) {
+    const team = teamRawJson.teamInfoCommon[0];
+    if (team) {
+        var insertQuery = `
+            INSERT INTO nba.team VALUES (
+                ${team.teamId},
+                "${team.seasonYear}",
+                "${team.teamCity}",
+                "${team.teamName}",
+                "${team.teamAbbreviation}",
+                "${team.teamConference}",
+                "${team.teamDivision}",
+                "${team.w}",
+                "${team.l}",
+                "${team.confRank}",
+                "${team.divRank}",
+                "${team.minYear}",
+                "${team.maxYear}"
+            ) ON DUPLICATE KEY UPDATE name=name
+        `;
 
-    connection.query(insertQuery, function (error, results, fields) {
-        if (error) {
-            console.log(insertQuery);
-            console.log(error);
-        }
-    });
+        sqlPool.getConnection((err, connection) => {
+            connection.query(insertQuery, function (error, results, fields) {
+                connection.release();
+                if (error) {
+                    if (error.code != "ER_DUP_ENTRY") {
+                        throw error;
+                    }
+                } else {
+
+                }
+            });
+            // TODO: why doesn't this release at the end
+        });
+    }
 }
 
 function savePlayer (playerDetail) {

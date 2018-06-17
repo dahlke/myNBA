@@ -1,6 +1,4 @@
 TODO:
-    - Update json file structure so I know which API endpoint data comes
-      from (ex: json/scoreboards/gameHeader, instead of json/gameHeader)
     - logging for each argument differentiated, and levels
     - rename file api to persist file api
 

@@ -24,5 +24,26 @@ function migrateTeamsToDatabase(dirPathArray) {
     });
 }
 
-migratePlayersToDatabase(['json', 'apiPlayerInfo', 'commonPlayerInfo']);
-migrateTeamsToDatabase(['json', 'apiTeamInfoCommon']);
+function migrateGameHeadersToDatabase(dirPathArray) {
+    const dirPath = `${dirPathArray.join("/")}`;
+
+    fs.readdirSync(dirPath).forEach(dir => {
+        const yearPath = `${dirPath}/${dir}`;
+        fs.readdirSync(yearPath).forEach(dir => {
+            const monthPath = `${yearPath}/${dir}`;
+            fs.readdirSync(monthPath).forEach(dir => {
+                const dayPath = `${monthPath}/${dir}`;
+                fs.readdirSync(dayPath).forEach(file => {
+                    const gamePath = `${dayPath}/${file}`;
+                    const gameHeaderDataRaw = fs.readFileSync(gamePath, 'utf8');
+                    const gameHeaderDataJson = JSON.parse(gameHeaderDataRaw);
+                    dbApi.saveGameHeader(gameHeaderDataJson);
+                });
+            });
+        });
+    });
+}
+
+// migratePlayersToDatabase(['json', 'apiPlayerInfo', 'commonPlayerInfo']);
+// migrateTeamsToDatabase(['json', 'apiTeamInfoCommon']);
+migrateGameHeadersToDatabase(['json', 'apiScoreboard', 'gameHeader']);

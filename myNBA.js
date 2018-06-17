@@ -35,8 +35,8 @@ function requestScoreboard (gameDate, gameHeaderPath, gameLinescorePath)  {
 
         for (i in gameHeaders) {
             let gameHeader = gameHeaders[i];
-            scoreboardGameHeaderPath.push(gameHeader.gameId);
-            fileApi.persistJSON(scoreboardGameHeaderPath, gameHeader);
+            const fullPath = scoreboardGameHeaderPath.concat([gameHeader.gameId]);
+            fileApi.persistJSON(fullPath, gameHeader);
         }
 
         for (i in gameLineScores) {
@@ -115,6 +115,7 @@ function loopScoreboards(dayMoment) {
                     requestScoreboard(fmtDay, gameHeaderPath, gameLinescorePath);
                     console.log(`Scoreboards for ${fmtDay} requested...`);
                     loopScoreboards(dayBefore);
+                    // TODO: print saved
                 });
             } else {
                 console.log(`Game day info for ${fmtDay} already exists.`);
@@ -145,7 +146,7 @@ if (myNBA.players) {
 
 if (myNBA.scores) {
     console.log(`Requesting all uncollected NBA score data.`);
-    let start = moment().subtract(2, 'years');
+    let start = moment();
     loopScoreboards(start);
 }
 

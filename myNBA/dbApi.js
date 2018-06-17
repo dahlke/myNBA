@@ -88,12 +88,39 @@ function savePlayer (playerDetail) {
 
 }
 
-function saveGameLineScore (connection, gameLineScore) {
+function saveGameLineScore (gameLineScore) {
+    if (gameLineScore) {
+
+    }
 
 }
 
-function saveGameHeader (connection, gameHeader) {
+function saveGameHeader (gameHeader) {
+    if (gameHeader) {
+        sqlPool.getConnection((err, connection) => {
+            const insertQuery = `
+                INSERT INTO nba.game_header VALUES (
+                    ${gameHeader.gameId},
+                    "${gameHeader.gameDateEst}",
+                    ${gameHeader.homeTeamId},
+                    ${gameHeader.visitorTeamId},
+                    "${gameHeader.natlTvBroadcasterAbbreviation}"
+                ) ON DUPLICATE KEY UPDATE game_date=game_date;
+            `;
 
+            connection.query(insertQuery, function (error, results, fields) {
+                connection.release();
+                if (error) {
+                    if (error.code != "ER_DUP_ENTRY") {
+                        throw error;
+                    }
+                } else {
+
+                }
+            });
+            // TODO: why doesn't this release at the end
+        });
+    }
 }
 
 

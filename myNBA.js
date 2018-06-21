@@ -9,7 +9,7 @@ const dbApi = require("./myNBA/dbApi");
 const API_RATE_LIMIT_WAIT_MIN_MS = 1 * 1000;
 const API_DATE_FMT = "MM/DD/YYYY";
 const NBA_FOUNDED_DATE = "06/06/1946";
-const NBA_SEASON_MONTHS = [1, 2, 3, 4, 5, 6, 10, 11, 12];
+const NBA_SEASON_MONTHS = [1, 2, 3, 4, 5, 6, 9, 10, 11, 12];
 
 
 function requestTeam (teamId)  {

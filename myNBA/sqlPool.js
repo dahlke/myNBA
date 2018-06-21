@@ -1,24 +1,18 @@
 const mysql = require('mysql');
 
-// TODO: config file
-const HOST = 'localhost';
+const HOST = '127.0.0.1';
 const USER = 'root';
 const PASSWORD = '';
 const DATABASE = 'nba';
 
 const pool = mysql.createPool({
-    host: HOST,
-    user: USER,
-    password: PASSWORD,
-    database: DATABASE
+    connectionLimit: 1000,
+    host: '127.0.0.1',
+    user: 'root',
+    password: '',
+    database: 'nba'
 });
 
-function getConnection(callback) {
-    pool.getConnection(function(err, connection) {
-        callback(err, connection);
-    });
-};
-
 module.exports = {
-    getConnection: getConnection
+    pool: pool
 };

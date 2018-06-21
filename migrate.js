@@ -1,6 +1,6 @@
 const fs = require('fs');
 const dbApi = require("./myNBA/dbApi");
-
+const pool = require("./myNBA/sqlPool").pool;
 
 function migratePlayersToDatabase(dirPathArray) {
     const dirPath = `${dirPathArray.join("/")}`;
@@ -37,6 +37,7 @@ function migrateGameHeadersToDatabase(dirPathArray) {
                     const gamePath = `${dayPath}/${file}`;
                     const gameHeaderDataRaw = fs.readFileSync(gamePath, 'utf8');
                     const gameHeaderDataJson = JSON.parse(gameHeaderDataRaw);
+
                     dbApi.saveGameHeader(gameHeaderDataJson);
                 });
             });
@@ -45,5 +46,7 @@ function migrateGameHeadersToDatabase(dirPathArray) {
 }
 
 // migratePlayersToDatabase(['json', 'apiPlayerInfo', 'commonPlayerInfo']);
-// migrateTeamsToDatabase(['json', 'apiTeamInfoCommon']);
-migrateGameHeadersToDatabase(['json', 'apiScoreboard', 'gameHeader']);
+migrateTeamsToDatabase(['json', 'apiTeamInfoCommon']);
+// migrateGameLineScoresToDatabase(['json', 'apiScoreboard', 'gameHeader']);
+//migrateGameHeadersToDatabase(['json', 'apiScoreboard', 'gameHeader']);
+pool.end();

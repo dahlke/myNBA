@@ -11,6 +11,16 @@ function syncJsonExists(filePathArray) {
     return exists;
 }
 
+function syncDirExists(dirPathArray) {
+    const dirPath = `${dirPathArray.join("/")}`;
+    let exists = false;
+    if (fs.existsSync(dirPath)) {
+        exists = true;
+    }
+    return exists;
+}
+
+
 function persistJSON (filePathArray, payload) {
     const filePath = `${filePathArray.join("/")}.json`;
     const dirPath = getDirName(filePath);
@@ -34,5 +44,6 @@ function persistJSON (filePathArray, payload) {
 
 module.exports = {
     persistJSON: persistJSON,
-    syncJsonExists: syncJsonExists
+    syncJsonExists: syncJsonExists,
+    syncDirExists: syncDirExists
 }

@@ -105,23 +105,28 @@ function loopScoreboards(dayMoment) {
     // TODO: more logging
 
     if (dateInSeason && fmtDay != NBA_FOUNDED_DATE) {
-        setTimeout(() => {
-            const gameHeaderPath = ["json", "apiScoreboard", "gameHeader", year, month, day];
-            const gameLinescorePath = ["json", "apiScoreboard", "gameLinescore", year, month, day];
-            const gameDateExists = fileApi.syncJsonExists(gameHeaderPath) && fileApi.syncJsonExists(gameLinescorePath);
+        if (fmtDay != NBA_FOUNDED_DATE) {
+            setTimeout(() => {
+                const gameHeaderPath = ["json", "apiScoreboard", "gameHeader", year, month, day];
+                const gameLinescorePath = ["json", "apiScoreboard", "gameLinescore", year, month, day];
+                const gameDateExists = fileApi.syncDirExists(gameHeaderPath) && fileApi.syncDirExists(gameLinescorePath);
 
-            if (!gameDateExists && dateInSeason) {
-                setTimeout(() => {
-                    requestScoreboard(fmtDay, gameHeaderPath, gameLinescorePath);
-                    console.log(`Scoreboards for ${fmtDay} requested...`);
+                if (!gameDateExists) {
+                    setTimeout(() => {
+                        requestScoreboard(fmtDay, gameHeaderPath, gameLinescorePath);
+                        console.log(`Scoreboards for ${fmtDay} requested...`);
+                        loopScoreboards(dayBefore);
+                        // TODO: print saved
+                    });
+                } else {
+                    console.log(`Game day info for ${fmtDay} already exists.`);
                     loopScoreboards(dayBefore);
-                    // TODO: print saved
-                });
-            } else {
-                console.log(`Game day info for ${fmtDay} already exists.`);
-                loopScoreboards(dayBefore);
-            }
-        }, API_RATE_LIMIT_WAIT_MIN_MS);
+                }
+            }, API_RATE_LIMIT_WAIT_MIN_MS);
+        }
+    } else if (fmtDay != NBA_FOUNDED_DATE) {
+        console.log(`${fmtDay} is not a season date.`);
+        loopScoreboards(dayBefore);
     }
 }
 

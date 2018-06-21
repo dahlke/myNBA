@@ -1,4 +1,4 @@
-const sqlPool = require("./sqlPool");
+const pool = require("./sqlPool").pool;
 
 function saveTeam (teamRawJson) {
     const team = teamRawJson.teamInfoCommon[0];
@@ -21,7 +21,8 @@ function saveTeam (teamRawJson) {
             ) ON DUPLICATE KEY UPDATE name=name
         `;
 
-        sqlPool.getConnection((err, connection) => {
+        pool.getConnection((err, connection) => {
+            console.log(err, connection);
             connection.query(insertQuery, function (error, results, fields) {
                 connection.release();
                 if (error) {
@@ -69,7 +70,7 @@ function savePlayer (playerDetail) {
             ) ON DUPLICATE KEY UPDATE first_name=first_name;
         `;
 
-        sqlPool.getConnection((err, connection) => {
+        pool.getConnection((err, connection) => {
             connection.query(insertQuery, function (error, results, fields) {
                 connection.release();
                 if (error) {
@@ -97,7 +98,7 @@ function saveGameLineScore (gameLineScore) {
 
 function saveGameHeader (gameHeader) {
     if (gameHeader) {
-        sqlPool.getConnection((err, connection) => {
+        pool.getConnection((err, connection) => {
             const insertQuery = `
                 INSERT INTO nba.game_header VALUES (
                     ${gameHeader.gameId},
@@ -107,6 +108,8 @@ function saveGameHeader (gameHeader) {
                     "${gameHeader.natlTvBroadcasterAbbreviation}"
                 ) ON DUPLICATE KEY UPDATE game_date=game_date;
             `;
+
+            console.log(insertQuery);
 
             connection.query(insertQuery, function (error, results, fields) {
                 connection.release();

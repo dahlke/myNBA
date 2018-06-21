@@ -1,21 +1,34 @@
-SELECT *
+SELECT
+    gh.game_date,
+    gh.game_id,
+    t.name home_team_name,
+    t2.name visitor_team_name
 FROM
     game_header gh,
-    team t
-WHERE gh.home_team_id = t.id;
+    team t,
+    team t2
+WHERE
+	gh.home_team_id = t.team_id AND
+	gh.visitor_team_id = t2.team_id
+GROUP BY 2, 3, 4, 5
+ORDER BY 1 DESC
+INTO OUTFILE 'all_games.tsv'
+FIELDS TERMINATED BY '\t';
 
-select
-    gh.game_date,
+SELECT
+    COUNT(*),
     gh.home_team_id,
     gh.visitor_team_id,
-    IF (t.team_id = gh.home_team_id, t.name, NULL) home_team,
-    IF (t.team_id = gh.visitor_team_id, t.name, NULL) visitor_team
-from
+    t.name home_team_name,
+    t2.name visitor_team_nam
+FROM
     game_header gh,
-    team t
-where
-    game_date = '2015-10-03' AND
-    (
-        home_team_id = t.team_id OR
-        visitor_team_id = t.team_id
-    );
+    team t,
+    team t2
+WHERE
+	gh.home_team_id = t.team_id AND
+	gh.visitor_team_id = t2.team_id
+GROUP BY 2, 3, 4, 5
+ORDER BY 1 DESC
+INTO OUTFILE 'count_distinct_games.tsv'
+FIELDS TERMINATED BY '\t';

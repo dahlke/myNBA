@@ -1,8 +1,9 @@
+#!/usr/bin/env node
+
 const myNBA = require("commander");
 const util = require("util");
 const NBA = require("nba");
 const moment = require("moment");
-const fileApi = require("./myNBA/fileApi");
 const dbApi = require("./myNBA/dbApi");
 
 const API_RATE_LIMIT_WAIT_MIN_MS = 1 * 1000;
@@ -14,15 +15,13 @@ const NBA_SEASON_MONTHS = [1, 2, 3, 4, 5, 6, 10, 11, 12];
 function requestTeam (teamId)  {
     NBA.stats.teamInfoCommon({ TeamID: teamId }).then((response) => {
         const teamDetail = response.teamInfoCommon[0];
-        // fileApi.persistJSON(teamPath, response);
         dbApi.saveTeam(response);
         console.log(`${response.teamInfoCommon[0].teamName} saved.`);
     });
 }
 
-function requestPlayer (playerId, playerPath)  {
+function requestPlayer (playerId)  {
     NBA.stats.playerInfo({ PlayerID: playerId }).then((response) => {
-        // fileApi.persistJSON(playerPath, response);
         dbApi.savePlayer(response);
         console.log(`${response.commonPlayerInfo[0].displayFirstLast} saved.`);
     });
@@ -35,15 +34,12 @@ function requestScoreboard (gameDate)  {
 
         for (i in gameHeaders) {
             let gameHeader = gameHeaders[i];
-            // const fullPath = scoreboardGameHeaderPath.concat([gameHeader.gameId]);
-            // fileApi.persistJSON(fullPath, gameHeader);
             dbApi.saveGameHeader(gameHeader);
         }
 
+        console.log(gameHeaders.length, gameLineScores.length);
         for (i in gameLineScores) {
             let gameLineScore = gameLineScores[i];
-            // const fullPath = scoreboardGameLinescorePath.concat([gameLineScore.gameId, gameLineScore.teamId]);
-            // fileApi.persistJSON(fullPath, gameLineScore);
             dbApi.saveGameLineScore(gameLineScore);
         }
     });
@@ -54,8 +50,6 @@ function loopTeams(remainingTeams) {
 
     if (!!team) {
         const teamId = team.teamId;
-        // const teamPath = ["json", "apiTeamInfoCommon", teamId];
-        const teamDetailExists = fileApi.syncJsonExists(teamPath);
 
         if (true || !teamDetailExists) {
             setTimeout(() => {
@@ -78,22 +72,15 @@ function loopPlayers(remainingPlayers) {
 
     if (!!player) {
         const playerId = player.playerId;
-        const playerPath = ["json", "apiPlayerInfo", "commonPlayerInfo", playerId];
-        const playerDetailExists = fileApi.syncJsonExists(playerPath);
 
-        if (!playerDetailExists) {
-            setTimeout(() => {
-                requestPlayer(playerId, playerPath);
-                console.log(`${player.fullName} requested...`);
-                if (remainingPlayers.length != 0) {
-                    console.log(`Estimated time remaining: ${(API_RATE_LIMIT_WAIT_MIN_MS * remainingPlayers.length) / 1000}s ...`)
-                    loopPlayers(remainingPlayers);
-                }
-            }, API_RATE_LIMIT_WAIT_MIN_MS);
-        } else {
-            console.log(`Player info for ${player.fullName} already exists.`);
-            loopPlayers(remainingPlayers);
-        }
+        setTimeout(() => {
+            requestPlayer(playerId);
+            console.log(`${player.fullName} requested...`);
+            if (remainingPlayers.length != 0) {
+                console.log(`Estimated time remaining: ${(API_RATE_LIMIT_WAIT_MIN_MS * remainingPlayers.length) / 1000}s ...`)
+                loopPlayers(remainingPlayers);
+            }
+        }, API_RATE_LIMIT_WAIT_MIN_MS);
     }
 }
 
@@ -109,16 +96,10 @@ function loopScoreboards(dayMoment) {
     if (dateInSeason && fmtDay != NBA_FOUNDED_DATE) {
         if (fmtDay != NBA_FOUNDED_DATE) {
             setTimeout(() => {
-                // const gameHeaderPath = ["json", "apiScoreboard", "gameHeader", year, month, day];
-                // const gameLinescorePath = ["json", "apiScoreboard", "gameLinescore", year, month, day];
-                // const gameDateExists = fileApi.syncDirExists(gameHeaderPath) && fileApi.syncDirExists(gameLinescorePath);
-
-                setTimeout(() => {
-                    requestScoreboard(fmtDay);
-                    console.log(`Scoreboards for ${fmtDay} requested...`);
-                    loopScoreboards(dayBefore);
-                    // TODO: print saved
-                });
+                requestScoreboard(fmtDay);
+                console.log(`Scoreboards for ${fmtDay} requested...`);
+                loopScoreboards(dayBefore);
+                // TODO: print saved
             }, API_RATE_LIMIT_WAIT_MIN_MS);
         }
     } else if (fmtDay != NBA_FOUNDED_DATE) {

@@ -1,9 +1,8 @@
 SELECT
-    COUNT(*),
-    gh.home_team_id,
-    gh.visitor_team_id,
+    gh.game_date,
+    gh.game_id,
     t.name home_team_name,
-    t2.name visitor_team_nam
+    t2.name visitor_team_name
 FROM
     game_header gh,
     team t,
@@ -13,5 +12,5 @@ WHERE
 	gh.visitor_team_id = t2.team_id
 GROUP BY 2, 3, 4, 5
 ORDER BY 1 DESC
-INTO OUTFILE 'count_distinct_games.tsv'
+INTO OUTFILE 'all_games.tsv'
 FIELDS TERMINATED BY '\t';

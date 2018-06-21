@@ -1,4 +1,4 @@
-const pool = require("./sqlPool").pool;
+const pool = require("./memsqlPool").pool;
 
 function saveTeam (teamRawJson) {
     const team = teamRawJson.teamInfoCommon[0];
@@ -119,6 +119,7 @@ function saveGameLineScore (gameLineScore) {
                 ) ON DUPLICATE KEY UPDATE points=points;
             `;
 
+            console.log(insertQuery);
             connection.query(insertQuery, (error, results, fields) => {
                 connection.release();
                 if (error) {

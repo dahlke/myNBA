@@ -1,6 +1,5 @@
 TODO:
     - logging for each argument differentiated, and levels
-    - merge scraping and migrating
 
 IDEAS:
     - Top 10 rivalries / teams that have played each other the most times

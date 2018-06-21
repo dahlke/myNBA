@@ -22,7 +22,6 @@ function saveTeam (teamRawJson) {
         `;
 
         pool.getConnection((err, connection) => {
-            console.log(err, connection);
             connection.query(insertQuery, function (error, results, fields) {
                 connection.release();
                 if (error) {
@@ -91,9 +90,47 @@ function savePlayer (playerDetail) {
 
 function saveGameLineScore (gameLineScore) {
     if (gameLineScore) {
+        pool.getConnection((err, connection) => {
+            const insertQuery = `
+                INSERT INTO nba.game_team_line_score VALUES (
+                    ${gameLineScore.gameId},
+                    ${gameLineScore.teamId},
+                    ${gameLineScore.ptsQtr1},
+                    ${gameLineScore.ptsQtr2},
+                    ${gameLineScore.ptsQtr3},
+                    ${gameLineScore.ptsQtr4},
+                    ${gameLineScore.ptsOt1},
+                    ${gameLineScore.ptsOt2},
+                    ${gameLineScore.ptsOt3},
+                    ${gameLineScore.ptsOt4},
+                    ${gameLineScore.ptsOt5},
+                    ${gameLineScore.ptsOt6},
+                    ${gameLineScore.ptsOt7},
+                    ${gameLineScore.ptsOt8},
+                    ${gameLineScore.ptsOt9},
+                    ${gameLineScore.ptsOt10},
+                    ${gameLineScore.pts},
+                    ${gameLineScore.fgPct},
+                    ${gameLineScore.fg3Pct},
+                    ${gameLineScore.ftPct},
+                    ${gameLineScore.ast},
+                    ${gameLineScore.reb},
+                    ${gameLineScore.tov}
+                ) ON DUPLICATE KEY UPDATE points=points;
+            `;
 
+            connection.query(insertQuery, (error, results, fields) => {
+                connection.release();
+                if (error) {
+                    if (error.code != "ER_DUP_ENTRY") {
+                        throw error;
+                    } else {
+
+                    }
+                }
+            });
+        });
     }
-
 }
 
 function saveGameHeader (gameHeader) {
@@ -109,16 +146,14 @@ function saveGameHeader (gameHeader) {
                 ) ON DUPLICATE KEY UPDATE game_date=game_date;
             `;
 
-            console.log(insertQuery);
-
             connection.query(insertQuery, function (error, results, fields) {
                 connection.release();
                 if (error) {
                     if (error.code != "ER_DUP_ENTRY") {
                         throw error;
-                    }
-                } else {
+                    } else {
 
+                    }
                 }
             });
             // TODO: why doesn't this release at the end

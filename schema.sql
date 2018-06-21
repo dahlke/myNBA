@@ -78,5 +78,5 @@ CREATE TABLE nba.game_team_line_score (
     assists int,
     rebounds int,
     turnovers int,
-    primary key(game_id)
+    primary key(game_id, team_id)
 );

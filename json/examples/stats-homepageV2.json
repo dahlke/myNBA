@@ -1,0 +1,458 @@
+{
+  "homePageStat1": [
+    {
+      "rank": 1,
+      "playerId": 201935,
+      "player": "James Harden",
+      "teamId": 1610612745,
+      "teamAbbreviation": "HOU",
+      "teamName": "Houston Rockets",
+      "jerseyNum": "13",
+      "playerPosition": "G",
+      "pts": 30.4
+    },
+    {
+      "rank": 2,
+      "playerId": 203076,
+      "player": "Anthony Davis",
+      "teamId": 1610612740,
+      "teamAbbreviation": "NOP",
+      "teamName": "New Orleans Pelicans",
+      "jerseyNum": "23",
+      "playerPosition": "F-C",
+      "pts": 28.1
+    },
+    {
+      "rank": 3,
+      "playerId": 2544,
+      "player": "LeBron James",
+      "teamId": 1610612739,
+      "teamAbbreviation": "CLE",
+      "teamName": "Cleveland Cavaliers",
+      "jerseyNum": "23",
+      "playerPosition": "F-G",
+      "pts": 27.5
+    },
+    {
+      "rank": 4,
+      "playerId": 203081,
+      "player": "Damian Lillard",
+      "teamId": 1610612757,
+      "teamAbbreviation": "POR",
+      "teamName": "Portland Trail Blazers",
+      "jerseyNum": "0",
+      "playerPosition": "G",
+      "pts": 26.9
+    },
+    {
+      "rank": 5,
+      "playerId": 203507,
+      "player": "Giannis Antetokounmpo",
+      "teamId": 1610612749,
+      "teamAbbreviation": "MIL",
+      "teamName": "Milwaukee Bucks",
+      "jerseyNum": "34",
+      "playerPosition": "F",
+      "pts": 26.9
+    }
+  ],
+  "homePageStat2": [
+    {
+      "rank": 1,
+      "playerId": 203083,
+      "player": "Andre Drummond",
+      "teamId": 1610612765,
+      "teamAbbreviation": "DET",
+      "teamName": "Detroit Pistons",
+      "jerseyNum": "0",
+      "playerPosition": "C",
+      "reb": 16
+    },
+    {
+      "rank": 2,
+      "playerId": 201599,
+      "player": "DeAndre Jordan",
+      "teamId": 1610612746,
+      "teamAbbreviation": "LAC",
+      "teamName": "LA Clippers",
+      "jerseyNum": "6",
+      "playerPosition": "C",
+      "reb": 15.2
+    },
+    {
+      "rank": 3,
+      "playerId": 2730,
+      "player": "Dwight Howard",
+      "teamId": 1610612766,
+      "teamAbbreviation": "CHA",
+      "teamName": "Charlotte Hornets",
+      "jerseyNum": "12",
+      "playerPosition": "C",
+      "reb": 12.5
+    },
+    {
+      "rank": 4,
+      "playerId": 1626157,
+      "player": "Karl-Anthony Towns",
+      "teamId": 1610612750,
+      "teamAbbreviation": "MIN",
+      "teamName": "Minnesota Timberwolves",
+      "jerseyNum": "32",
+      "playerPosition": "C",
+      "reb": 12.3
+    },
+    {
+      "rank": 5,
+      "playerId": 203076,
+      "player": "Anthony Davis",
+      "teamId": 1610612740,
+      "teamAbbreviation": "NOP",
+      "teamName": "New Orleans Pelicans",
+      "jerseyNum": "23",
+      "playerPosition": "F-C",
+      "reb": 11.1
+    }
+  ],
+  "homePageStat3": [
+    {
+      "rank": 1,
+      "playerId": 201566,
+      "player": "Russell Westbrook",
+      "teamId": 1610612760,
+      "teamAbbreviation": "OKC",
+      "teamName": "Oklahoma City Thunder",
+      "jerseyNum": "0",
+      "playerPosition": "G",
+      "ast": 10.3
+    },
+    {
+      "rank": 2,
+      "playerId": 2544,
+      "player": "LeBron James",
+      "teamId": 1610612739,
+      "teamAbbreviation": "CLE",
+      "teamName": "Cleveland Cavaliers",
+      "jerseyNum": "23",
+      "playerPosition": "F-G",
+      "ast": 9.1
+    },
+    {
+      "rank": 3,
+      "playerId": 201935,
+      "player": "James Harden",
+      "teamId": 1610612745,
+      "teamAbbreviation": "HOU",
+      "teamName": "Houston Rockets",
+      "jerseyNum": "13",
+      "playerPosition": "G",
+      "ast": 8.8
+    },
+    {
+      "rank": 4,
+      "playerId": 200765,
+      "player": "Rajon Rondo",
+      "teamId": 1610612740,
+      "teamAbbreviation": "NOP",
+      "teamName": "New Orleans Pelicans",
+      "jerseyNum": "9",
+      "playerPosition": "G",
+      "ast": 8.2
+    },
+    {
+      "rank": 5,
+      "playerId": 1627732,
+      "player": "Ben Simmons",
+      "teamId": 1610612755,
+      "teamAbbreviation": "PHI",
+      "teamName": "Philadelphia 76ers",
+      "jerseyNum": "25",
+      "playerPosition": "G-F",
+      "ast": 8.2
+    }
+  ],
+  "homePageStat4": [
+    {
+      "rank": 1,
+      "playerId": 203506,
+      "player": "Victor Oladipo",
+      "teamId": 1610612754,
+      "teamAbbreviation": "IND",
+      "teamName": "Indiana Pacers",
+      "jerseyNum": "4",
+      "playerPosition": "G",
+      "stl": 2.36
+    },
+    {
+      "rank": 2,
+      "playerId": 202331,
+      "player": "Paul George",
+      "teamId": 1610612760,
+      "teamAbbreviation": "OKC",
+      "teamName": "Oklahoma City Thunder",
+      "jerseyNum": "13",
+      "playerPosition": "F",
+      "stl": 2.04
+    },
+    {
+      "rank": 3,
+      "playerId": 202339,
+      "player": "Eric Bledsoe",
+      "teamId": 1610612749,
+      "teamAbbreviation": "MIL",
+      "teamName": "Milwaukee Bucks",
+      "jerseyNum": "6",
+      "playerPosition": "G",
+      "stl": 2.01
+    },
+    {
+      "rank": 4,
+      "playerId": 202710,
+      "player": "Jimmy Butler",
+      "teamId": 1610612750,
+      "teamAbbreviation": "MIN",
+      "teamName": "Minnesota Timberwolves",
+      "jerseyNum": "23",
+      "playerPosition": "G",
+      "stl": 1.97
+    },
+    {
+      "rank": 5,
+      "playerId": 201566,
+      "player": "Russell Westbrook",
+      "teamId": 1610612760,
+      "teamAbbreviation": "OKC",
+      "teamName": "Oklahoma City Thunder",
+      "jerseyNum": "0",
+      "playerPosition": "G",
+      "stl": 1.84
+    }
+  ],
+  "homePageStat5": [
+    {
+      "rank": 1,
+      "playerId": 203991,
+      "player": "Clint Capela",
+      "teamId": 1610612745,
+      "teamAbbreviation": "HOU",
+      "teamName": "Houston Rockets",
+      "jerseyNum": "15",
+      "playerPosition": "C",
+      "fgPct": 0.652
+    },
+    {
+      "rank": 2,
+      "playerId": 201599,
+      "player": "DeAndre Jordan",
+      "teamId": 1610612746,
+      "teamAbbreviation": "LAC",
+      "teamName": "LA Clippers",
+      "jerseyNum": "6",
+      "playerPosition": "C",
+      "fgPct": 0.645
+    },
+    {
+      "rank": 3,
+      "playerId": 1626149,
+      "player": "Montrezl Harrell",
+      "teamId": 1610612746,
+      "teamAbbreviation": "LAC",
+      "teamName": "LA Clippers",
+      "jerseyNum": "5",
+      "playerPosition": "F-C",
+      "fgPct": 0.635
+    },
+    {
+      "rank": 4,
+      "playerId": 203500,
+      "player": "Steven Adams",
+      "teamId": 1610612760,
+      "teamAbbreviation": "OKC",
+      "teamName": "Oklahoma City Thunder",
+      "jerseyNum": "12",
+      "playerPosition": "C",
+      "fgPct": 0.629
+    },
+    {
+      "rank": 5,
+      "playerId": 202683,
+      "player": "Enes Kanter",
+      "teamId": 1610612752,
+      "teamAbbreviation": "NYK",
+      "teamName": "New York Knicks",
+      "jerseyNum": "00",
+      "playerPosition": "C",
+      "fgPct": 0.592
+    }
+  ],
+  "homePageStat6": [
+    {
+      "rank": 1,
+      "playerId": 201939,
+      "player": "Stephen Curry",
+      "teamId": 1610612744,
+      "teamAbbreviation": "GSW",
+      "teamName": "Golden State Warriors",
+      "jerseyNum": "30",
+      "playerPosition": "G",
+      "ftPct": 0.921
+    },
+    {
+      "rank": 2,
+      "playerId": 101108,
+      "player": "Chris Paul",
+      "teamId": 1610612745,
+      "teamAbbreviation": "HOU",
+      "teamName": "Houston Rockets",
+      "jerseyNum": "3",
+      "playerPosition": "G",
+      "ftPct": 0.919
+    },
+    {
+      "rank": 3,
+      "playerId": 203081,
+      "player": "Damian Lillard",
+      "teamId": 1610612757,
+      "teamAbbreviation": "POR",
+      "teamName": "Portland Trail Blazers",
+      "jerseyNum": "0",
+      "playerPosition": "G",
+      "ftPct": 0.916
+    },
+    {
+      "rank": 4,
+      "playerId": 201158,
+      "player": "Marco Belinelli",
+      "teamId": 1610612755,
+      "teamAbbreviation": "PHI",
+      "teamName": "Philadelphia 76ers",
+      "jerseyNum": "18",
+      "playerPosition": "G-F",
+      "ftPct": 0.908
+    },
+    {
+      "rank": 5,
+      "playerId": 1627750,
+      "player": "Jamal Murray",
+      "teamId": 1610612743,
+      "teamAbbreviation": "DEN",
+      "teamName": "Denver Nuggets",
+      "jerseyNum": "27",
+      "playerPosition": "G",
+      "ftPct": 0.905
+    }
+  ],
+  "homePageStat7": [
+    {
+      "rank": 1,
+      "playerId": 201954,
+      "player": "Darren Collison",
+      "teamId": 1610612754,
+      "teamAbbreviation": "IND",
+      "teamName": "Indiana Pacers",
+      "jerseyNum": "2",
+      "playerPosition": "G",
+      "fg3Pct": 0.468
+    },
+    {
+      "rank": 2,
+      "playerId": 203493,
+      "player": "Reggie Bullock",
+      "teamId": 1610612765,
+      "teamAbbreviation": "DET",
+      "teamName": "Detroit Pistons",
+      "jerseyNum": "25",
+      "playerPosition": "G-F",
+      "fg3Pct": 0.445
+    },
+    {
+      "rank": 3,
+      "playerId": 203490,
+      "player": "Otto Porter Jr.",
+      "teamId": 1610612764,
+      "teamAbbreviation": "WAS",
+      "teamName": "Washington Wizards",
+      "jerseyNum": "22",
+      "playerPosition": "F",
+      "fg3Pct": 0.441
+    },
+    {
+      "rank": 4,
+      "playerId": 204060,
+      "player": "Joe Ingles",
+      "teamId": 1610612762,
+      "teamAbbreviation": "UTA",
+      "teamName": "Utah Jazz",
+      "jerseyNum": "2",
+      "playerPosition": "F",
+      "fg3Pct": 0.44
+    },
+    {
+      "rank": 5,
+      "playerId": 202691,
+      "player": "Klay Thompson",
+      "teamId": 1610612744,
+      "teamAbbreviation": "GSW",
+      "teamName": "Golden State Warriors",
+      "jerseyNum": "11",
+      "playerPosition": "G",
+      "fg3Pct": 0.44
+    }
+  ],
+  "homePageStat8": [
+    {
+      "rank": 1,
+      "playerId": 203076,
+      "player": "Anthony Davis",
+      "teamId": 1610612740,
+      "teamAbbreviation": "NOP",
+      "teamName": "New Orleans Pelicans",
+      "jerseyNum": "23",
+      "playerPosition": "F-C",
+      "blk": 2.57
+    },
+    {
+      "rank": 2,
+      "playerId": 203991,
+      "player": "Clint Capela",
+      "teamId": 1610612745,
+      "teamAbbreviation": "HOU",
+      "teamName": "Houston Rockets",
+      "jerseyNum": "15",
+      "playerPosition": "C",
+      "blk": 1.85
+    },
+    {
+      "rank": 3,
+      "playerId": 1626167,
+      "player": "Myles Turner",
+      "teamId": 1610612754,
+      "teamAbbreviation": "IND",
+      "teamName": "Indiana Pacers",
+      "jerseyNum": "33",
+      "playerPosition": "C",
+      "blk": 1.82
+    },
+    {
+      "rank": 4,
+      "playerId": 203954,
+      "player": "Joel Embiid",
+      "teamId": 1610612755,
+      "teamAbbreviation": "PHI",
+      "teamName": "Philadelphia 76ers",
+      "jerseyNum": "21",
+      "playerPosition": "C",
+      "blk": 1.76
+    },
+    {
+      "rank": 5,
+      "playerId": 201142,
+      "player": "Kevin Durant",
+      "teamId": 1610612744,
+      "teamAbbreviation": "GSW",
+      "teamName": "Golden State Warriors",
+      "jerseyNum": "35",
+      "playerPosition": "F",
+      "blk": 1.75
+    }
+  ]
+}

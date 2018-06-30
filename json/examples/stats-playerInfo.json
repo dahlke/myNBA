@@ -1,0 +1,135 @@
+{
+  "commonPlayerInfo": [
+    {
+      "personId": 201939,
+      "firstName": "Stephen",
+      "lastName": "Curry",
+      "displayFirstLast": "Stephen Curry",
+      "displayLastCommaFirst": "Curry, Stephen",
+      "displayFiLast": "S. Curry",
+      "birthdate": "1988-03-14T00:00:00",
+      "school": "Davidson",
+      "country": "USA",
+      "lastAffiliation": "Davidson/USA",
+      "height": "6-3",
+      "weight": "190",
+      "seasonExp": 8,
+      "jersey": "30",
+      "position": "Guard",
+      "rosterstatus": "Active",
+      "teamId": 1610612744,
+      "teamName": "Warriors",
+      "teamAbbreviation": "GSW",
+      "teamCode": "warriors",
+      "teamCity": "Golden State",
+      "playercode": "stephen_curry",
+      "fromYear": 2009,
+      "toYear": 2017,
+      "dleagueFlag": "N",
+      "gamesPlayedFlag": "Y",
+      "draftYear": "2009",
+      "draftRound": "1",
+      "draftNumber": "7"
+    }
+  ],
+  "playerHeadlineStats": [
+    {
+      "playerId": 201939,
+      "playerName": "Stephen Curry",
+      "timeFrame": "2017-18",
+      "pts": 26.4,
+      "ast": 6.1,
+      "reb": 5.1,
+      "pie": 0.165
+    }
+  ],
+  "availableSeasons": [
+    {
+      "seasonId": "12009"
+    },
+    {
+      "seasonId": "22009"
+    },
+    {
+      "seasonId": "12010"
+    },
+    {
+      "seasonId": "22010"
+    },
+    {
+      "seasonId": "12011"
+    },
+    {
+      "seasonId": "22011"
+    },
+    {
+      "seasonId": "12012"
+    },
+    {
+      "seasonId": "22012"
+    },
+    {
+      "seasonId": "42012"
+    },
+    {
+      "seasonId": "12013"
+    },
+    {
+      "seasonId": "22013"
+    },
+    {
+      "seasonId": "32013"
+    },
+    {
+      "seasonId": "42013"
+    },
+    {
+      "seasonId": "12014"
+    },
+    {
+      "seasonId": "22014"
+    },
+    {
+      "seasonId": "32014"
+    },
+    {
+      "seasonId": "42014"
+    },
+    {
+      "seasonId": "12015"
+    },
+    {
+      "seasonId": "22015"
+    },
+    {
+      "seasonId": "32015"
+    },
+    {
+      "seasonId": "42015"
+    },
+    {
+      "seasonId": "12016"
+    },
+    {
+      "seasonId": "22016"
+    },
+    {
+      "seasonId": "32016"
+    },
+    {
+      "seasonId": "42016"
+    },
+    {
+      "seasonId": "12017"
+    },
+    {
+      "seasonId": "22017"
+    },
+    {
+      "seasonId": "32017"
+    },
+    {
+      "seasonId": "42017"
+    }
+  ]
+}

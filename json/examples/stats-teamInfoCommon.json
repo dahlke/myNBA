@@ -1,0 +1,410 @@
+{
+  "teamInfoCommon": [
+    {
+      "teamId": 1610612744,
+      "seasonYear": "2017-18",
+      "teamCity": "Golden State",
+      "teamName": "Warriors",
+      "teamAbbreviation": "GSW",
+      "teamConference": "West",
+      "teamDivision": "Pacific",
+      "teamCode": "warriors",
+      "w": 58,
+      "l": 24,
+      "pct": 0.707,
+      "confRank": 2,
+      "divRank": 1,
+      "minYear": "1946",
+      "maxYear": "2017"
+    }
+  ],
+  "teamSeasonRanks": [
+    {
+      "leagueId": "00",
+      "seasonId": "22017",
+      "teamId": 1610612744,
+      "ptsRank": 1,
+      "ptsPg": 113.5,
+      "rebRank": 17,
+      "rebPg": 43.5,
+      "astRank": 1,
+      "astPg": 29.3,
+      "oppPtsRank": 18,
+      "oppPtsPg": 107.5
+    }
+  ],
+  "availableSeasons": [
+    {
+      "seasonId": "21946"
+    },
+    {
+      "seasonId": "21947"
+    },
+    {
+      "seasonId": "21948"
+    },
+    {
+      "seasonId": "21949"
+    },
+    {
+      "seasonId": "21950"
+    },
+    {
+      "seasonId": "41950"
+    },
+    {
+      "seasonId": "21951"
+    },
+    {
+      "seasonId": "41951"
+    },
+    {
+      "seasonId": "21952"
+    },
+    {
+      "seasonId": "21953"
+    },
+    {
+      "seasonId": "21954"
+    },
+    {
+      "seasonId": "21955"
+    },
+    {
+      "seasonId": "41955"
+    },
+    {
+      "seasonId": "21956"
+    },
+    {
+      "seasonId": "41956"
+    },
+    {
+      "seasonId": "21957"
+    },
+    {
+      "seasonId": "41957"
+    },
+    {
+      "seasonId": "21958"
+    },
+    {
+      "seasonId": "21959"
+    },
+    {
+      "seasonId": "41959"
+    },
+    {
+      "seasonId": "21960"
+    },
+    {
+      "seasonId": "41960"
+    },
+    {
+      "seasonId": "21961"
+    },
+    {
+      "seasonId": "41961"
+    },
+    {
+      "seasonId": "21962"
+    },
+    {
+      "seasonId": "21963"
+    },
+    {
+      "seasonId": "41963"
+    },
+    {
+      "seasonId": "21964"
+    },
+    {
+      "seasonId": "21965"
+    },
+    {
+      "seasonId": "21966"
+    },
+    {
+      "seasonId": "41966"
+    },
+    {
+      "seasonId": "21967"
+    },
+    {
+      "seasonId": "41967"
+    },
+    {
+      "seasonId": "21968"
+    },
+    {
+      "seasonId": "41968"
+    },
+    {
+      "seasonId": "21969"
+    },
+    {
+      "seasonId": "21970"
+    },
+    {
+      "seasonId": "41970"
+    },
+    {
+      "seasonId": "21971"
+    },
+    {
+      "seasonId": "41971"
+    },
+    {
+      "seasonId": "21972"
+    },
+    {
+      "seasonId": "41972"
+    },
+    {
+      "seasonId": "21973"
+    },
+    {
+      "seasonId": "21974"
+    },
+    {
+      "seasonId": "41974"
+    },
+    {
+      "seasonId": "21975"
+    },
+    {
+      "seasonId": "41975"
+    },
+    {
+      "seasonId": "21976"
+    },
+    {
+      "seasonId": "41976"
+    },
+    {
+      "seasonId": "21977"
+    },
+    {
+      "seasonId": "21978"
+    },
+    {
+      "seasonId": "21979"
+    },
+    {
+      "seasonId": "21980"
+    },
+    {
+      "seasonId": "21981"
+    },
+    {
+      "seasonId": "21982"
+    },
+    {
+      "seasonId": "21983"
+    },
+    {
+      "seasonId": "21984"
+    },
+    {
+      "seasonId": "21985"
+    },
+    {
+      "seasonId": "21986"
+    },
+    {
+      "seasonId": "41986"
+    },
+    {
+      "seasonId": "21987"
+    },
+    {
+      "seasonId": "21988"
+    },
+    {
+      "seasonId": "41988"
+    },
+    {
+      "seasonId": "21989"
+    },
+    {
+      "seasonId": "21990"
+    },
+    {
+      "seasonId": "41990"
+    },
+    {
+      "seasonId": "21991"
+    },
+    {
+      "seasonId": "31991"
+    },
+    {
+      "seasonId": "41991"
+    },
+    {
+      "seasonId": "21992"
+    },
+    {
+      "seasonId": "21993"
+    },
+    {
+      "seasonId": "41993"
+    },
+    {
+      "seasonId": "21994"
+    },
+    {
+      "seasonId": "21995"
+    },
+    {
+      "seasonId": "21996"
+    },
+    {
+      "seasonId": "11997"
+    },
+    {
+      "seasonId": "21997"
+    },
+    {
+      "seasonId": "11998"
+    },
+    {
+      "seasonId": "21998"
+    },
+    {
+      "seasonId": "11999"
+    },
+    {
+      "seasonId": "21999"
+    },
+    {
+      "seasonId": "12000"
+    },
+    {
+      "seasonId": "22000"
+    },
+    {
+      "seasonId": "12001"
+    },
+    {
+      "seasonId": "22001"
+    },
+    {
+      "seasonId": "12002"
+    },
+    {
+      "seasonId": "22002"
+    },
+    {
+      "seasonId": "12003"
+    },
+    {
+      "seasonId": "22003"
+    },
+    {
+      "seasonId": "12004"
+    },
+    {
+      "seasonId": "22004"
+    },
+    {
+      "seasonId": "12005"
+    },
+    {
+      "seasonId": "22005"
+    },
+    {
+      "seasonId": "12006"
+    },
+    {
+      "seasonId": "22006"
+    },
+    {
+      "seasonId": "42006"
+    },
+    {
+      "seasonId": "12007"
+    },
+    {
+      "seasonId": "22007"
+    },
+    {
+      "seasonId": "12008"
+    },
+    {
+      "seasonId": "22008"
+    },
+    {
+      "seasonId": "12009"
+    },
+    {
+      "seasonId": "22009"
+    },
+    {
+      "seasonId": "12010"
+    },
+    {
+      "seasonId": "22010"
+    },
+    {
+      "seasonId": "12011"
+    },
+    {
+      "seasonId": "22011"
+    },
+    {
+      "seasonId": "12012"
+    },
+    {
+      "seasonId": "22012"
+    },
+    {
+      "seasonId": "42012"
+    },
+    {
+      "seasonId": "12013"
+    },
+    {
+      "seasonId": "22013"
+    },
+    {
+      "seasonId": "42013"
+    },
+    {
+      "seasonId": "12014"
+    },
+    {
+      "seasonId": "22014"
+    },
+    {
+      "seasonId": "42014"
+    },
+    {
+      "seasonId": "12015"
+    },
+    {
+      "seasonId": "22015"
+    },
+    {
+      "seasonId": "42015"
+    },
+    {
+      "seasonId": "12016"
+    },
+    {
+      "seasonId": "22016"
+    },
+    {
+      "seasonId": "42016"
+    },
+    {
+      "seasonId": "12017"
+    },
+    {
+      "seasonId": "22017"
+    },
+    {
+      "seasonId": "42017"
+    }
+  ]
+}

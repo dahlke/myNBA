@@ -12,6 +12,4 @@ WHERE
 	gh.home_team_id = t.team_id AND
 	gh.visitor_team_id = t2.team_id
 GROUP BY 2, 3, 4, 5
-ORDER BY 1 DESC
-INTO OUTFILE 'count_distinct_games.tsv'
-FIELDS TERMINATED BY '\t';
+ORDER BY 1 DESC;

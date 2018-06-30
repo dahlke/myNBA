@@ -69,6 +69,7 @@ function savePlayer (playerDetail) {
             ) ON DUPLICATE KEY UPDATE first_name=first_name;
         `;
 
+
         pool.getConnection((err, connection) => {
             connection.query(insertQuery, function (error, results, fields) {
                 connection.release();

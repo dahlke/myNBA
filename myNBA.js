@@ -5,6 +5,7 @@ const util = require("util");
 const NBA = require("nba");
 const moment = require("moment");
 const dbApi = require("./myNBA/dbApi");
+const playerApi = require("./myNBA/db/playerApi");
 
 const API_RATE_LIMIT_WAIT_MIN_MS = 1 * 1000;
 const API_DATE_FMT = "MM/DD/YYYY";
@@ -22,7 +23,7 @@ function requestTeam (teamId)  {
 
 function requestPlayer (playerId)  {
     NBA.stats.playerInfo({ PlayerID: playerId }).then((response) => {
-        dbApi.savePlayer(response);
+        playerApi.savePlayer(response);
         console.log(`${response.commonPlayerInfo[0].displayFirstLast} saved.`);
     });
 }
@@ -37,7 +38,6 @@ function requestScoreboard (gameDate)  {
             dbApi.saveGameHeader(gameHeader);
         }
 
-        console.log(gameHeaders.length, gameLineScores.length);
         for (i in gameLineScores) {
             let gameLineScore = gameLineScores[i];
             dbApi.saveGameLineScore(gameLineScore);
@@ -72,7 +72,9 @@ function loopPlayers(remainingPlayers) {
 
     if (!!player) {
         const playerId = player.playerId;
+        playerApi.playerExists(playerId);
 
+        /*
         setTimeout(() => {
             requestPlayer(playerId);
             console.log(`${player.fullName} requested...`);
@@ -81,6 +83,7 @@ function loopPlayers(remainingPlayers) {
                 loopPlayers(remainingPlayers);
             }
         }, API_RATE_LIMIT_WAIT_MIN_MS);
+        */
     }
 }
 
@@ -132,4 +135,6 @@ if (myNBA.scores) {
     let start = moment();
     loopScoreboards(start);
 }
+
+// TODO: boxscore
 

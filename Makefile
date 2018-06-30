@@ -4,6 +4,10 @@ MEMSQL_DATABASE = nba
 BACKUP_DATE = $(shell date +%Y_%m_%d_%H_%M)
 BACKUP_PATH = backups/${BACKUP_DATE}.sql
 
+.PHONY: setup
+setup:
+	mysql -u ${MEMSQL_USER} -h ${MEMSQL_HOST} < sql/schema.sql
+
 .PHONY: backup
 backup:
 	mysqldump -u ${MEMSQL_USER} -h ${MEMSQL_HOST} ${MEMSQL_DATABASE} > ${BACKUP_PATH}

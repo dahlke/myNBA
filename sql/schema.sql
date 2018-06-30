@@ -1,8 +1,6 @@
-DROP DATABASE IF EXISTS nba;
-CREATE DATABASE nba;
-USE nba;
+CREATE DATABASE IF NOT EXISTS nba;
 
-CREATE TABLE nba.team (
+CREATE TABLE IF NOT EXISTS nba.team (
 	team_id int,
     season_yr varchar(16),
 	city varchar(32),
@@ -20,7 +18,7 @@ CREATE TABLE nba.team (
     primary key (team_id)
 );
 
-CREATE TABLE nba.player (
+CREATE TABLE IF NOT EXISTS nba.player (
 	player_id int,
 	first_name varchar(32),
 	last_name varchar(32),
@@ -44,7 +42,7 @@ CREATE TABLE nba.player (
     primary key (player_id)
 );
 
-CREATE TABLE nba.game_header (
+CREATE TABLE IF NOT EXISTS nba.game_header (
     game_id int,
     game_date date,
     home_team_id int,
@@ -54,7 +52,7 @@ CREATE TABLE nba.game_header (
     primary key(game_id)
 );
 
-CREATE TABLE nba.game_team_line_score (
+CREATE TABLE IF NOT EXISTS nba.game_team_line_score (
     game_id int,
     team_id int,
     points_q1 int,

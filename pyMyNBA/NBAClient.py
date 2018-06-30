@@ -34,7 +34,7 @@ for item in data["parameters"]:
     parameters[item["name"]] = item
 
 
-class NbaClient(object):
+class NBAClient(object):
     pass
 
 
@@ -73,7 +73,4 @@ def make_endpoint(name, endpoint):
 # iterate through the endpoints and create a method for each one
 for endpoint in data['stats_endpoints']:
     func = make_endpoint(endpoint["name"], endpoint)
-    setattr(NbaClient, snake(endpoint["name"]), staticmethod(func))
-
-# usage:
-print NbaClient.player_profile({ 'PlayerID': 201939 })
+    setattr(NBAClient, snake(endpoint["name"]), staticmethod(func))

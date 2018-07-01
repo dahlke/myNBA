@@ -12,3 +12,12 @@ IDEAS:
 
 Get schedule - get games - get teams - get players - get coaches - get
 refs - get line scores - get player stats
+
+# Get the date
+# Get every game played that day
+# Get the results of each game
+# Get the teams in each game
+# Get the players in each game
+# Get the box scores of each game
+
+# Find popular graphs and reproduce them for practice

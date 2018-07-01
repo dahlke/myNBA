@@ -1,3 +1,5 @@
+#! /usr/local/bin/python
+
 from pyMyNBA.client import NBAClient
 import pyMyNBA.db_api.team_api as team_api
 import pyMyNBA.db_api.player_api as player_api
@@ -6,15 +8,9 @@ from datetime import datetime, timedelta
 import json
 import time
 
-# Get the date
-# Get every game played that day
-# Get the results of each game
-# Get the teams in each game
-# Get the players in each game
-# Get the box scores of each game
 
 API_DATE_FMT = '%m/%d/%Y'
-NBA_MODERN_ERA_DATE = '01/01/1959'
+NBA_MODERN_ERA_DATE = '01/01/2017'
 
 client = NBAClient()
 print dir(client)
@@ -61,10 +57,11 @@ def get_players():
                 player_api.insert_player(player_info)
                 break
             else:
-                print('No player info available for player ID: %d' % team_id)
+                print('No player info available for player ID: %d' % player_id)
+
 
 def get_scoreboards():
-    nba_founded_datetime =  datetime.strptime(NBA_MODERN_ERA_DATE, API_DATE_FMT)
+    nba_founded_datetime = datetime.strptime(NBA_MODERN_ERA_DATE, API_DATE_FMT)
     game_date = nba_founded_datetime
 
     while game_date < datetime.now():
@@ -74,14 +71,21 @@ def get_scoreboards():
         if game_date_exists is False:
             try:
                 print 'Getting date %s' % game_date_api_fmt
-                result_sets =  json.loads(client.scoreboard({'gameDate': '12/24/2014'}))['resultSets'][0]
-                row_set = result_sets['rowSet']
-                if len(row_set) > 0:
-                    print result_sets['headers']
-                    scoreboard_info = row_set[0]
-                    print scoreboard_info
-                else:
-                    print 'No games played on %s' % game_date_api_fmt
+                result_sets = json.loads(
+                    client.scoreboard({'gameDate': game_date_api_fmt})
+                )['resultSets']
+                game_header_result_sets = result_sets[0]
+                game_line_score_result_sets = result_sets[1]
+
+                game_header_row_set = game_header_result_sets['rowSet']
+                game_line_score_row_set = game_line_score_result_sets['rowSet']
+
+                for game_header_row in game_header_row_set:
+                    scoreboard_api.insert_game_header(game_header_row)
+
+                for game_line_score_row in game_line_score_row_set:
+                    scoreboard_api.insert_game_line_score(game_line_score_row)
+
             except Exception as e:
                 print e
         else:

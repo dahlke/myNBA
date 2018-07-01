@@ -46,44 +46,43 @@ def insert_game_header(game_header_row):
 
     with memsql.get_connection() as conn:
         try:
-            print insert_query
             conn.execute(insert_query)
             print('Game ID (%s) saved from day %s.' % (game_id, game_date))
         except Exception as e:
             print e
 
-def insert_game_line_score(game_line_score_row):
-    game_date = game_line_score_row[0]
-    game_sequence = game_line_score_row[1]
-    game_id = game_line_score_row[2]
-    team_id = game_line_score_row[3]
-    team_abbreviation = game_line_score_row[4]
-    team_city_name = game_line_score_row[5]
-    team_wins_losses = game_line_score_row[6]
-    pts_qtr1 = game_line_score_row[7]
-    pts_qtr2 = game_line_score_row[8]
-    pts_qtr3 = game_line_score_row[9]
-    pts_qtr4 = game_line_score_row[10]
-    pts_ot1 = game_line_score_row[11]
-    pts_ot2 = game_line_score_row[12]
-    pts_ot3 = game_line_score_row[13]
-    pts_ot4 = game_line_score_row[14]
-    pts_ot5 = game_line_score_row[15]
-    pts_ot6 = game_line_score_row[16]
-    pts_ot7 = game_line_score_row[17]
-    pts_ot8 = game_line_score_row[18]
-    pts_ot9 = game_line_score_row[19]
-    pts_ot10 = game_line_score_row[20]
-    pts = game_line_score_row[21]
-    fg_pct = game_line_score_row[22]
-    ft_pct = game_line_score_row[23]
-    pg3_pct = game_line_score_row[24]
-    ast = game_line_score_row[25]
-    reb = game_line_score_row[26]
-    tov = game_line_score_row[27]
+def insert_line_score(line_score_row):
+    game_date = line_score_row[0]
+    # game_sequence = line_score_row[1]
+    game_id = line_score_row[2]
+    team_id = line_score_row[3]
+    # team_abbreviation = line_score_row[4]
+    # team_city_name = line_score_row[5]
+    # team_wins_losses = line_score_row[6]
+    pts_qtr1 = line_score_row[7]
+    pts_qtr2 = line_score_row[8]
+    pts_qtr3 = line_score_row[9]
+    pts_qtr4 = line_score_row[10]
+    pts_ot1 = line_score_row[11]
+    pts_ot2 = line_score_row[12]
+    pts_ot3 = line_score_row[13]
+    pts_ot4 = line_score_row[14]
+    pts_ot5 = line_score_row[15]
+    pts_ot6 = line_score_row[16]
+    pts_ot7 = line_score_row[17]
+    pts_ot8 = line_score_row[18]
+    pts_ot9 = line_score_row[19]
+    pts_ot10 = line_score_row[20]
+    pts = line_score_row[21]
+    fg_pct = line_score_row[22]
+    ft_pct = line_score_row[23]
+    pg3_pct = line_score_row[24]
+    ast = line_score_row[25]
+    reb = line_score_row[26]
+    tov = line_score_row[27]
 
     insert_query = '''
-        INSERT INTO game_team_line_score VALUES (
+        INSERT INTO line_score VALUES (
             %s,
             %s,
             %s,
@@ -138,6 +137,6 @@ def insert_game_line_score(game_line_score_row):
         try:
             print insert_query
             conn.execute(insert_query)
-            print('Game Line Score for Game (%s) saved from day %s.' % (game_id, game_date))
+            print('Line Score for Game (%s) saved from day %s.' % (game_id, game_date))
         except Exception as e:
             print e

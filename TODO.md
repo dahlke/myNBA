@@ -10,8 +10,22 @@ IDEAS:
     - Players with the biggest point differentials against each other
 
 
-Get schedule - get games - get teams - get players - get coaches - get
-refs - get line scores - get player stats
+
+Download Logic:
+
+Get all teams (stats-teamYears):
+    Download common team info (stats-teamInfoCommon)
+
+Get all current players:
+    Download common player info (stats-playerInfo)
+
+
+Start in the modern NBA era (60s on), get all games for each day:
+    Get game header and line score (stats.scoreboard)
+    Get game box score (stats.boxscore)
+    Get player performance
+    Get coaches
+    Get refs (stats-boxScoreSummary)
 
 # Get the date
 # Get every game played that day

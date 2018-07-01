@@ -23,8 +23,7 @@ function requestTeam (teamId)  {
 
 function requestPlayer (playerId)  {
     NBA.stats.playerInfo({ PlayerID: playerId }).then((response) => {
-        playerApi.savePlayer(response);
-        console.log(`${response.commonPlayerInfo[0].displayFirstLast} saved.`);
+        playerApi.savePlayer(response); console.log(`${response.commonPlayerInfo[0].displayFirstLast} saved.`);
     });
 }
 

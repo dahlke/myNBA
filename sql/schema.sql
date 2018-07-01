@@ -1,7 +1,7 @@
 CREATE DATABASE IF NOT EXISTS nba;
 
 CREATE TABLE IF NOT EXISTS nba.team (
-	team_id int,
+	id int,
     season_yr varchar(16),
 	city varchar(32),
 	name varchar(32),
@@ -15,11 +15,11 @@ CREATE TABLE IF NOT EXISTS nba.team (
     min_year int,
     max_year int,
     /* raw_data json, */
-    primary key (team_id)
+    primary key (id)
 );
 
 CREATE TABLE IF NOT EXISTS nba.player (
-	player_id int,
+	id int,
 	first_name varchar(32),
 	last_name varchar(32),
 	team_id int,

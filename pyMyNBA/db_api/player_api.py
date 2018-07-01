@@ -5,63 +5,90 @@ def check_player_exists(player_id):
     num_player_matches = 0
     with memsql.get_connection() as conn:
         num_player_matches = len(
-            conn.query('SELECT * FROM player WHERE id = %d' % player_id)
+            conn.query('SELECT * FROM player WHERE player_id = %d' % player_id)
         )
     return num_player_matches > 0
 
 
-def insert_team(player_row):
-    team_id = player_row[0]
-    season_year = player_row[1]
-    team_city = player_row[2]
-    team_name = player_row[3]
-    team_abbreviation = player_row[4]
-    team_conference = player_row[5]
-    team_division = player_row[6]
-    # team_code = player_row[7]
-    team_wins = player_row[8]
-    team_losses = player_row[9]
-    # team_pct = player_row[10]
-    team_conf_rank = player_row[11]
-    team_div_rank = player_row[12]
-    team_min_year = int(player_row[13])
-    team_max_year = int(player_row[14])
+def insert_player(player_row):
+    player_id = player_row[0]
+    player_first_name = player_row[1]
+    player_last_name = player_row[2]
+    # player_display_first_initial_last = player_row[3]
+    # player_display_last_comma_first = player_row[4]
+    # player_display_first_last = player_row[5]
+    player_birthdate = player_row[6]
+    player_school = player_row[7]
+    player_country = player_row[8]
+    player_last_affiliation = player_row[9]
+    player_height = player_row[10]
+    player_weight = player_row[11]
+    player_season_exp = player_row[12]
+    player_jersey = player_row[13]
+    player_position = player_row[14]
+    # player_roster_status = player_row[15]
+    player_team_id = player_row[16]
+    # player_team_name = player_row[17]
+    # player_team_abbreviation = player_row[18]
+    # player_team_code = player_row[19]
+    # player_team_city = player_row[20]
+    # player_player_code = player_row[21]
+    player_from_year = player_row[22]
+    player_to_year = player_row[23]
+    player_dleague_flag = player_row[24]
+    # player_games_played_flag = player_row[25]
+    player_draft_year = int(player_row[26])
+    player_draft_round = int(player_row[27])
+    player_draft_number = int(player_row[28])
 
     insert_query = '''
-        INSERT INTO team VALUES (
+        INSERT INTO player VALUES (
+            %s,
+            "%s",
+            "%s",
+            %s,
             "%s",
             "%s",
             "%s",
             "%s",
             "%s",
+            %s,
+            %s,
+            %s,
             "%s",
+            %s,
+            %s,
             "%s",
-            %d,
-            %d,
-            %d,
-            %d,
-            %d,
-            %d
+            %s,
+            %s,
+            %s
         );
     ''' % (
-        team_id,
-        season_year,
-        team_city,
-        team_name,
-        team_abbreviation,
-        team_conference,
-        team_division,
-        team_wins,
-        team_losses,
-        team_conf_rank,
-        team_div_rank,
-        team_min_year,
-        team_max_year
+        player_id,
+        player_first_name,
+        player_last_name,
+        player_team_id,
+        player_birthdate,
+        player_school,
+        player_country,
+        player_last_affiliation,
+        player_height,
+        player_weight,
+        player_season_exp,
+        player_jersey,
+        player_position,
+        player_from_year,
+        player_to_year,
+        player_dleague_flag,
+        player_draft_year,
+        player_draft_round,
+        player_draft_number
     )
 
     with memsql.get_connection() as conn:
         try:
             conn.execute(insert_query)
-            print('New team (%s) saved.' % team_name)
+            print('New Player (%s %s) saved.' % (player_first_name, player_last_name))
+            pass
         except Exception as e:
             print e

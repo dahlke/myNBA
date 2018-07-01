@@ -1,7 +1,10 @@
 from pyMyNBA.client import NBAClient
 import pyMyNBA.db_api.team_api as team_api
 import pyMyNBA.db_api.player_api as player_api
+import pyMyNBA.db_api.scoreboard_api as scoreboard_api
+from datetime import datetime, timedelta
 import json
+import time
 
 # Get the date
 # Get every game played that day
@@ -10,9 +13,11 @@ import json
 # Get the players in each game
 # Get the box scores of each game
 
+API_DATE_FMT = '%m/%d/%Y'
+NBA_MODERN_ERA_DATE = '01/01/1959'
+
 client = NBAClient()
 print dir(client)
-# print client.player_profile({ 'PlayerID': 201939 })
 
 
 def get_teams():
@@ -57,9 +62,36 @@ def get_players():
                 break
             else:
                 print('No player info available for player ID: %d' % team_id)
-    pass
+
+def get_scoreboards():
+    nba_founded_datetime =  datetime.strptime(NBA_MODERN_ERA_DATE, API_DATE_FMT)
+    game_date = nba_founded_datetime
+
+    while game_date < datetime.now():
+        game_date_exists = scoreboard_api.check_game_header_exists(game_date)
+        game_date_api_fmt = game_date.strftime(API_DATE_FMT)
+
+        if game_date_exists is False:
+            try:
+                print 'Getting date %s' % game_date_api_fmt
+                result_sets =  json.loads(client.scoreboard({'gameDate': '12/24/2014'}))['resultSets'][0]
+                row_set = result_sets['rowSet']
+                if len(row_set) > 0:
+                    print result_sets['headers']
+                    scoreboard_info = row_set[0]
+                    print scoreboard_info
+                else:
+                    print 'No games played on %s' % game_date_api_fmt
+            except Exception as e:
+                print e
+        else:
+            print 'Score data exists for %s' % game_date_api_fmt
+
+        game_date += timedelta(days=1)
+        time.sleep(1)
 
 
 if __name__ == '__main__':
     # get_teams()
-    get_players()
+    # get_players()
+    get_scoreboards()

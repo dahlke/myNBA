@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS nba.player (
 	school varchar(32),
 	country varchar(3),
 	last_affiliation varchar(32),
-	height varchar(5),
+	height int,
 	weight int,
 	season_exp smallint,
 	jersey smallint,
@@ -35,9 +35,9 @@ CREATE TABLE IF NOT EXISTS nba.player (
 	from_year int,
 	to_year int,
 	d_league bool,
-	draft_year int,
-	draft_round int,
-	draft_number int,
+	draft_year varchar(8),
+	draft_round varchar(8),
+	draft_number varchar(8),
     /* raw_data json, */
     primary key (id)
 );

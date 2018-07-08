@@ -5,7 +5,7 @@ def check_player_exists(player_id):
     num_player_matches = 0
     with memsql.get_connection() as conn:
         num_player_matches = len(
-            conn.query('SELECT * FROM player WHERE player_id = %d' % player_id)
+            conn.query('SELECT * FROM player WHERE id = %d' % player_id)
         )
     return num_player_matches > 0
 
@@ -21,10 +21,10 @@ def insert_player(player_row):
     player_school = player_row[7]
     player_country = player_row[8]
     player_last_affiliation = player_row[9]
-    player_height = player_row[10]
-    player_weight = player_row[11]
-    player_season_exp = player_row[12]
-    player_jersey = player_row[13]
+    player_height = player_row[10] if player_row[11] != "" else 'NULL'
+    player_weight = player_row[11] if player_row[11] != "" else 'NULL'
+    player_season_exp = player_row[12] if player_row[12] is not None else 'NULL'
+    player_jersey = player_row[13] if player_row[13] != "" else 'NULL'
     player_position = player_row[14]
     # player_roster_status = player_row[15]
     player_team_id = player_row[16]
@@ -37,9 +37,9 @@ def insert_player(player_row):
     player_to_year = player_row[23]
     player_dleague_flag = player_row[24]
     # player_games_played_flag = player_row[25]
-    player_draft_year = int(player_row[26])
-    player_draft_round = int(player_row[27])
-    player_draft_number = int(player_row[28])
+    player_draft_year = player_row[26]
+    player_draft_round = player_row[27]
+    player_draft_number = player_row[28]
 
     insert_query = '''
         INSERT INTO player VALUES (
@@ -51,17 +51,17 @@ def insert_player(player_row):
             "%s",
             "%s",
             "%s",
-            "%s",
             %s,
             %s,
-            %s,
-            "%s",
             %s,
             %s,
             "%s",
             %s,
             %s,
-            %s
+            "%s",
+            "%s",
+            "%s",
+            "%s"
         );
     ''' % (
         player_id,
@@ -89,6 +89,6 @@ def insert_player(player_row):
         try:
             conn.execute(insert_query)
             print("New Player (%s %s) saved." % (player_first_name, player_last_name))
-            pass
         except Exception as e:
-            print(e)
+            print(insert_query)
+            raise(e)

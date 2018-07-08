@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS nba.player (
 	draft_round int,
 	draft_number int,
     /* raw_data json, */
-    primary key (player_id)
+    primary key (id)
 );
 
 CREATE TABLE IF NOT EXISTS nba.game_header (
@@ -111,3 +111,9 @@ CREATE TABLE IF NOT EXISTS nba.box_score (
     plus_minus int,
     primary key(game_id, team_id, player_id)
 );
+
+/*
+CREATE TABLE IF NOT EXISTS nba.box_score_summary (
+
+);
+*/

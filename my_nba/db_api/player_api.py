@@ -1,4 +1,4 @@
-import pyMyNBA.db_api.memsql_conn as memsql
+import my_nba.db_api.memsql_conn as memsql
 
 
 def check_player_exists(player_id):
@@ -88,7 +88,7 @@ def insert_player(player_row):
     with memsql.get_connection() as conn:
         try:
             conn.execute(insert_query)
-            print('New Player (%s %s) saved.' % (player_first_name, player_last_name))
+            print("New Player (%s %s) saved." % (player_first_name, player_last_name))
             pass
         except Exception as e:
-            print e
+            print(e)

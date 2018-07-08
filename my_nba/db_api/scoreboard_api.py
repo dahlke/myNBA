@@ -1,4 +1,4 @@
-import pyMyNBA.db_api.memsql_conn as memsql
+import my_nba.db_api.memsql_conn as memsql
 
 
 def check_game_header_exists(game_date):

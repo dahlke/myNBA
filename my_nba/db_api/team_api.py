@@ -1,11 +1,11 @@
-import pyMyNBA.db_api.memsql_conn as memsql
+import my_nba.db_api.memsql_conn as memsql
 
 
 def check_team_exists(team_id):
     num_team_matches = 0
     with memsql.get_connection() as conn:
         num_team_matches = len(
-            conn.query('SELECT * FROM team WHERE team_id = %d' % team_id)
+            conn.query('SELECT * FROM team WHERE id = %d' % team_id)
         )
     return num_team_matches > 0
 
@@ -62,6 +62,6 @@ def insert_team(team_row):
     with memsql.get_connection() as conn:
         try:
             conn.execute(insert_query)
-            print('New team (%s) saved.' % team_name)
+            print("New team (%s) saved." % team_name)
         except Exception as e:
-            print e
+            print(e)

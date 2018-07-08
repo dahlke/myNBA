@@ -1,6 +1,15 @@
 import my_nba.db_api.memsql_conn as memsql
 
 
+class BoxscoreApi():
+
+    def __init__(self):
+        pass
+
+    def insert(self, box_score_row):
+        pass
+
+
 def insert_box_score(box_score_row):
     game_id = box_score_row[0]
     team_id = box_score_row[1]
@@ -41,7 +50,7 @@ def insert_box_score(box_score_row):
             "%s",
             "%s",
             "%s",
-            %s,
+            "%s",
             %s,
             %s,
             %s,
@@ -98,4 +107,5 @@ def insert_box_score(box_score_row):
             conn.execute(insert_query)
             print("Box Score for Game ID %s - %s saved" % (game_id, team_city))
         except Exception as e:
-            print e
+            print("Box Score", insert_query)
+            print(e)

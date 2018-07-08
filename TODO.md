@@ -1,5 +1,6 @@
 TODO:
     - logging for each argument differentiated, and levels
+    - Clean up the APIs and make them classes
 
 IDEAS:
     - Top 10 rivalries / teams that have played each other the most times

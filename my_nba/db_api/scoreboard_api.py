@@ -49,7 +49,7 @@ def insert_game_header(game_header_row):
             conn.execute(insert_query)
             print('Game ID (%s) saved from day %s.' % (game_id, game_date))
         except Exception as e:
-            print e
+            print(e)
 
 def insert_line_score(line_score_row):
     game_date = line_score_row[0]
@@ -135,8 +135,8 @@ def insert_line_score(line_score_row):
 
     with memsql.get_connection() as conn:
         try:
-            print insert_query
             conn.execute(insert_query)
             print('Line Score for Game (%s) saved from day %s.' % (game_id, game_date))
         except Exception as e:
-            print e
+            print(insert_query)
+            print(e)

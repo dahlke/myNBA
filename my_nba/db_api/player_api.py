@@ -1,6 +1,6 @@
 import my_nba.db_api.memsql_conn as memsql
 
-
+# TODO: make these classes
 def check_player_exists(player_id):
     num_player_matches = 0
     with memsql.get_connection() as conn:

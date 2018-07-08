@@ -42,6 +42,7 @@ CREATE TABLE IF NOT EXISTS nba.player (
     primary key (id)
 );
 
+
 CREATE TABLE IF NOT EXISTS nba.game_header (
     game_id int,
     game_date date,
@@ -51,6 +52,7 @@ CREATE TABLE IF NOT EXISTS nba.game_header (
     /* raw_data json, */
     primary key(game_id)
 );
+
 
 CREATE TABLE IF NOT EXISTS nba.line_score (
     game_id int,

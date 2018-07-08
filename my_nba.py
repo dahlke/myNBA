@@ -28,9 +28,8 @@ class MyNBA():
     def get_teams(self):
         self._team_downloader.download()
 
-    def get_scoreboards():
-        # self._scoreboard_downloader.download()
-        pass
+    def get_scoreboards(self):
+        self._scoreboard_downloader.download()
 
 
 if __name__ == "__main__":

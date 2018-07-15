@@ -11,28 +11,23 @@ IDEAS:
     - Players with the biggest point differentials against each other
 
 
-
 Download Logic:
 
-Get all teams (stats-teamYears):
-    Download common team info (stats-teamInfoCommon)
+    Get all teams (stats-teamYears):
+        Download common team info (stats-teamInfoCommon)
 
-Get all current players:
-    Download common player info (stats-playerInfo)
+    Get all current players:
+        Download common player info (stats-playerInfo)
 
-
-Start in the modern NBA era (60s on), get all games for each day:
-    Get game header and line score (stats.scoreboard)
-    Get game box score (stats.boxscore)
-    Get player performance
-    Get coaches
-    Get refs (stats-boxScoreSummary)
-
-# Get the date
-# Get every game played that day
-# Get the results of each game
-# Get the teams in each game
-# Get the players in each game
-# Get the box scores of each game
+    Start in the modern NBA era (60s on), get all games for each day:
+        Get game header and line score (stats.scoreboard)
+        Get game box score (stats.boxscore)
+        Get player performance
+        Get coaches
+        Get refs (stats-boxScoreSummary)
 
 # Find popular graphs and reproduce them for practice
+
+# https://www.reddit.com/r/dataisbeautiful/comments/7ajydl/every_final_score_that_has_occurred_in_the_nba_oc/
+# https://www.reddit.com/r/dataisbeautiful/comments/8wsjap/he_who_must_not_be_named_how_nba_fans_in/
+

@@ -6,49 +6,58 @@ from my_nba.downloaders.scoreboard import ScoreboardDownloader
 import logging
 import argparse
 
+logging.basicConfig(filename='my_nba.log', level=logging.INFO)
+
 
 class MyNBA():
 
-    def __init__(self):
-        self._logger = logging.getLogger(__name__)
-        self._logger.setLevel(logging.INFO)
+    def __init__(self, argparse_args):
+        self._logger = logging.getLogger(self.__class__.__name__)
+        self._logger.info("Initializing MyNBA program...")
+        self._logger.debug('NBA client methods: %s' % dir(NBAClient()))
 
-        self._logger.info("Initializing MyNBA program.")
+        # Schedule jobs instead of doing this
+        if argparse_args.players:
+            self._logger.info('Downloading players...')
+            player_downloader = PlayerDownloader()
+            player_downloader.download()
+            self._logger.info('Players downloaded.')
 
-        self._player_downloader = PlayerDownloader()
-        self._team_downloader = TeamDownloader()
-        self._scoreboard_downloader = ScoreboardDownloader()
+        if argparse_args.teams:
+            self._logger.info('Downloading teams...')
+            team_downloader = TeamDownloader()
+            team_downloader.download()
+            self._logger.info('Teams downloaded.')
 
-        client = NBAClient()
-        self._logger.debug('NBA client methods:', dir(client))
+        if argparse_args.scoreboards:
+            self._logger.info('Downloading scoreboards...')
+            scoreboard_downloader = ScoreboardDownloader()
+            scoreboard_downloader.download()
+            self._logger.info('Scoreboards downloaded.')
 
-    def get_players(self):
-        self._player_downloader.download()
-
-    def get_teams(self):
-        self._team_downloader.download()
-
-    def get_scoreboards(self):
-        self._scoreboard_downloader.download()
-
+        self._logger.info("MyNBA program terminating.")
 
 if __name__ == "__main__":
-    prog = MyNBA()
-
-    parser = argparse.ArgumentParser(description="Download NBA data for analysis")
-    parser.add_argument("-p", "--players", action="store_true", help="Download NBA player data")
-    parser.add_argument("-t", "--teams", action="store_true", help="Download NBA team data")
-    parser.add_argument("-s", "--scoreboards", action="store_true", help="Download NBA scoreboard data")
-    parser.add_argument("-d", "--debug", action="store_true", help="Print debug information")
-
+    parser = argparse.ArgumentParser(
+        description="Download NBA data for analysis"
+    )
+    parser.add_argument(
+        "-p", "--players",
+        action="store_true",
+        help="Download NBA player data"
+    )
+    parser.add_argument(
+        "-t", "--teams",
+        action="store_true",
+        help="Download NBA team data"
+    )
+    parser.add_argument(
+        "-s", "--scoreboards",
+        action="store_true", help="Download NBA scoreboard data"
+    )
+    parser.add_argument(
+        "-d", "--debug",
+        action="store_true", help="Print debug information"
+    )
     args = parser.parse_args()
-
-
-    if args.players:
-        prog.get_players()
-
-    if args.teams:
-        prog.get_teams()
-
-    if args.scoreboards:
-        prog.get_scoreboards()
+    prog = MyNBA(args)

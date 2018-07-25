@@ -7,7 +7,7 @@ import json
 import time
 
 API_DATE_FMT = '%m/%d/%Y'
-NBA_START_DATE = '10/01/1953'
+NBA_17_18_SEASON_START_DATE = '10/17/2017'
 
 
 class ScoreboardDownloader(BaseDownloader):
@@ -18,17 +18,21 @@ class ScoreboardDownloader(BaseDownloader):
         self._scoreboard_api = ScoreboardApi()
 
     def download(self):
-        nba_founded_datetime = datetime.strptime(NBA_START_DATE, API_DATE_FMT)
+        nba_founded_datetime = datetime.strptime(NBA_17_18_SEASON_START_DATE, API_DATE_FMT)
         max_date_saved = self._scoreboard_api.get_max_date_saved()
-        # game_date = datetime.strptime(
-                # max_date_saved.strftime(API_DATE_FMT), API_DATE_FMT
-            # ) # if max_date_saved is not None else nba_founded_datetime
-        game_date = nba_founded_datetime
+        game_date = datetime.strptime(
+                max_date_saved.strftime(API_DATE_FMT), API_DATE_FMT
+            ) if max_date_saved is not None else nba_founded_datetime
+        # game_date = nba_founded_datetime
         days_processed = 0
-        dates_timedelta = datetime.now().date() - max_date_saved
+        now_date = datetime.now().date()
+        dates_timedelta = now_date - max_date_saved \
+                if max_date_saved is not None \
+                else now_date - nba_founded_datetime.date()
 
         while game_date < datetime.now():
             days_processed += 1
+            # TODO: This does notwork, using wrong dates_timedelta I think
             progress(days_processed, dates_timedelta.days, "Downloading scoreboards...")
             game_date_exists = self._scoreboard_api.check_game_header_exists(game_date)
             game_date_api_fmt = game_date.strftime(API_DATE_FMT)

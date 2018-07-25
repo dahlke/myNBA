@@ -12,15 +12,28 @@ TODO:
     flake8
     Get coaches
     Get refs (stats-boxScoreSummary)
+    Get season start and end dates and work from those, or all dates in
+    each season
+    Is game_id not unique?
 
 IDEAS:
-    - Top 10 rivalries / teams that have played each other the most times
-    - Of them, who has the biggest point differential?
-    - Over time how did those point differentials cross over as one team got better?
-    - Teams with the biggest point differentials against each other
-    - Teams with the biggest point differentials at home or away against each other
-    - Players with the biggest point differentials against each other
+    - All Time
+        - Top 10 rivalries all time
+            - Most games
+                - Regular season point differential
+                    - Home court advantage?
+                - Change over time?
+            - Most playoff games
+                - Playoff point differential
+                    - Home court advantage?
+                - Change over time?
+            - Players involved in those games
+            - Biggest playoffs player
+    - By Season
+        - Players with the biggest point differentials against each other
+    - By Decade
+        - Top ranked players and their win rates against each other.
 
-# Find popular graphs and reproduce them for practice
-# https://www.reddit.com/r/dataisbeautiful/comments/7ajydl/every_final_score_that_has_occurred_in_the_nba_oc/
-# https://www.reddit.com/r/dataisbeautiful/comments/8wsjap/he_who_must_not_be_named_how_nba_fans_in/
+    - https://www.reddit.com/r/dataisbeautiful/search?q=NBA&restrict_sr=1
+        - https://www.reddit.com/r/dataisbeautiful/comments/7ajydl/every_final_score_that_has_occurred_in_the_nba_oc/
+        - https://www.reddit.com/r/dataisbeautiful/comments/8wsjap/he_who_must_not_be_named_how_nba_fans_in/

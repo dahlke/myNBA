@@ -47,46 +47,18 @@ class PlayerApi(BaseApi):
 
         insert_query = '''
             INSERT INTO player VALUES (
-                %s,
-                "%s",
-                "%s",
-                %s,
-                "%s",
-                "%s",
-                "%s",
-                "%s",
-                %s,
-                %s,
-                %s,
-                %s,
-                "%s",
-                %s,
-                %s,
-                "%s",
-                "%s",
-                "%s",
-                "%s"
+                %s, "%s", "%s", %s,
+                "%s", "%s", "%s", "%s",
+                %s, %s, %s, %s,
+                "%s", %s, %s, "%s",
+                "%s", "%s", "%s"
             );
         ''' % (
-            player_id,
-            player_first_name,
-            player_last_name,
-            player_team_id,
-            player_birthdate,
-            player_school,
-            player_country,
-            player_last_affiliation,
-            player_height,
-            player_weight,
-            player_season_exp,
-            player_jersey,
-            player_position,
-            player_from_year,
-            player_to_year,
-            player_dleague_flag,
-            player_draft_year,
-            player_draft_round,
-            player_draft_number
+            player_id, player_first_name, player_last_name, player_team_id,
+            player_birthdate, player_school, player_country, player_last_affiliation,
+            player_height, player_weight, player_season_exp, player_jersey,
+            player_position, player_from_year, player_to_year, player_dleague_flag,
+            player_draft_year, player_draft_round, player_draft_number
         )
 
         with memsql.get_connection() as conn:

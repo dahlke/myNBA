@@ -12,3 +12,10 @@ setup:
 backup:
 	mysqldump -u ${MEMSQL_USER} -h ${MEMSQL_HOST} ${MEMSQL_DATABASE} > ${BACKUP_PATH}
 
+.PHONY: logs
+logs:
+	tail -f my_nba.log
+
+.PHONY: todo
+todo:
+	@ag "TODO" --ignore Makefile

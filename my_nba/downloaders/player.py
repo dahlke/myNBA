@@ -1,5 +1,6 @@
 from my_nba.downloaders.base import BaseDownloader
 from my_nba.db_api.player import PlayerApi
+from my_nba.util.util import progress
 import json
 
 
@@ -14,7 +15,8 @@ class PlayerDownloader(BaseDownloader):
             self._client.players_info({})
         )['resultSets'][0]['rowSet']
 
-        for player_row in player_rows:
+        for i, player_row in enumerate(player_rows):
+            progress(i, len(player_rows), 'Downloading players...')
             player_id = player_row[0]
             player_exists = self._player_api.check_player_exists(player_id)
 
@@ -32,7 +34,7 @@ class PlayerDownloader(BaseDownloader):
                         player_id
                     )
                 else:
-                    self._logger.info(
+                    self._logger.debug(
                         'Player ID: %d unavailable' %
                         player_id
                     )
@@ -41,3 +43,5 @@ class PlayerDownloader(BaseDownloader):
                     'Player ID: %d already exists' %
                     player_id
                 )
+
+        self._logger.info("All teams downloaded.")

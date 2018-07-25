@@ -1,14 +1,16 @@
-from my_nba.client import NBAClient
+from my_nba.downloaders.base import BaseDownloader
 from my_nba.db_api.box_score import BoxScoreApi
 from my_nba.db_api.scoreboard import ScoreboardApi
+from my_nba.util.util import progress
 from datetime import datetime, timedelta
 import json
 import time
 
 API_DATE_FMT = '%m/%d/%Y'
-NBA_MODERN_ERA_DATE = '01/01/2017'
+NBA_START_DATE = '10/01/1953'
 
-class ScoreboardDownloader():
+
+class ScoreboardDownloader(BaseDownloader):
 
     def __init__(self):
         super().__init__()
@@ -16,11 +18,18 @@ class ScoreboardDownloader():
         self._scoreboard_api = ScoreboardApi()
 
     def download(self):
-        nba_founded_datetime = datetime.strptime(NBA_MODERN_ERA_DATE, API_DATE_FMT)
+        nba_founded_datetime = datetime.strptime(NBA_START_DATE, API_DATE_FMT)
+        max_date_saved = self._scoreboard_api.get_max_date_saved()
+        # game_date = datetime.strptime(
+                # max_date_saved.strftime(API_DATE_FMT), API_DATE_FMT
+            # ) # if max_date_saved is not None else nba_founded_datetime
         game_date = nba_founded_datetime
-        # TODO: get max date in there already
+        days_processed = 0
+        dates_timedelta = datetime.now().date() - max_date_saved
 
         while game_date < datetime.now():
+            days_processed += 1
+            progress(days_processed, dates_timedelta.days, "Downloading scoreboards...")
             game_date_exists = self._scoreboard_api.check_game_header_exists(game_date)
             game_date_api_fmt = game_date.strftime(API_DATE_FMT)
 
@@ -40,7 +49,7 @@ class ScoreboardDownloader():
                             self._scoreboard_api.insert_game_header(game_header_row)
 
                             try:
-                                self._logger.debug("Getting boxscores for Game ID %s" % game_id)
+                                self._logger.info("Getting boxscores for Game ID %s..." % game_id)
                                 box_score_row_set = json.loads(
                                         self._client.box_score({"GameID": game_id})
                                 )["resultSets"][0]["rowSet"]
@@ -58,6 +67,6 @@ class ScoreboardDownloader():
                     raise(e)
             else:
                 self._logger.info("Scoreboard data exists for %s" % game_date_api_fmt)
+                time.sleep(.2)
 
             game_date += timedelta(days=1)
-            time.sleep(.5)

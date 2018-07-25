@@ -1,9 +1,10 @@
 import my_nba.util.memsql_conn as memsql
+from my_nba.db_api.base import BaseApi
 
 
-class BoxScoreApi():
+class BoxScoreApi(BaseApi):
 
-    def insert_box_score(box_score_row):
+    def insert_box_score(self, box_score_row):
         game_id = box_score_row[0]
         team_id = box_score_row[1]
         team_abbreviation = box_score_row[2]

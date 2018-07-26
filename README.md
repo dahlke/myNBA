@@ -1,11 +1,10 @@
 # NBA Stats Persister
 Download NBA stats data to your local machine for static analysis without rate limits.
 
-// Library
-// https://github.com/bttmly/nba
-
-// Endpoints
-// https://github.com/bttmly/nba/blob/master/doc/stats.md
+- Library
+    - https://github.com/bttmly/nba
+- Endpoints
+    - https://github.com/bttmly/nba/blob/master/doc/stats.md
 
 
 TODO:

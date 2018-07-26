@@ -1,15 +1,15 @@
 SELECT
     COUNT(*),
-    gh.home_team_id,
-    gh.visitor_team_id,
-    t.name home_team_name,
-    t2.name visitor_team_nam
+    ht.name home_team_name,
+    at.name away_team_name
 FROM
-    game_header gh,
-    team t,
-    team t2
-WHERE
-	gh.home_team_id = t.team_id AND
-	gh.visitor_team_id = t2.team_id
-GROUP BY 2, 3, 4, 5
-ORDER BY 1 DESC;
+    game_header gh
+-- Get the home team information
+INNER JOIN team ht ON
+    gh.home_team_id = ht.id
+-- Get the visiting team information
+INNER JOIN team at ON
+    gh.away_team_id = at.id
+GROUP BY 2, 3
+ORDER BY 1 DESC
+LIMIT 10;

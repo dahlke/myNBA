@@ -14,6 +14,7 @@ TODO:
     Get season start and end dates and work from those, or all dates in
     each season
     Is game_id not unique?
+    Get more data - from 1979 (Larry and Magic) on.
 
 IDEAS:
     - All Time
@@ -36,3 +37,6 @@ IDEAS:
     - https://www.reddit.com/r/dataisbeautiful/search?q=NBA&restrict_sr=1
         - https://www.reddit.com/r/dataisbeautiful/comments/7ajydl/every_final_score_that_has_occurred_in_the_nba_oc/
         - https://www.reddit.com/r/dataisbeautiful/comments/8wsjap/he_who_must_not_be_named_how_nba_fans_in/
+
+    - Show competitive info across these:
+        https://www.reddit.com/r/nba/comments/94p8iz/analysis_rivalries_and_least_favorite_teams_of/

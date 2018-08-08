@@ -57,8 +57,7 @@ class ScoreboardApi(BaseApi):
             except Exception as e:
                 self._logger.debug('Game Header insert query:', insert_query)
                 self._logger.error(e)
-                print(e)
-                raise(e)
+                # TODO: raise(e)
 
     def insert_line_score(self, line_score_row):
         # game_date = line_score_row[0]
@@ -113,7 +112,6 @@ class ScoreboardApi(BaseApi):
                 conn.execute(insert_query)
                 self._logger.debug('Line Score for Game ID %s saved.' % (game_id))
             except Exception as e:
-                print(insert_query)
                 self._logger.debug('Line Score insert query:', insert_query)
                 self._logger.error(e)
-                raise(e)
+                # TODO: raise(e)

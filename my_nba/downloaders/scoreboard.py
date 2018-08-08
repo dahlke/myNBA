@@ -7,7 +7,8 @@ import json
 import time
 
 API_DATE_FMT = '%m/%d/%Y'
-NBA_17_18_SEASON_START_DATE = '10/17/1980'
+# TODO: take in years as an argument instead
+NBA_17_18_SEASON_START_DATE = '09/17/1979'
 
 
 class ScoreboardDownloader(BaseDownloader):
@@ -21,10 +22,10 @@ class ScoreboardDownloader(BaseDownloader):
         nba_founded_datetime = datetime.strptime(NBA_17_18_SEASON_START_DATE, API_DATE_FMT)
         # TODO: we want one day less than the max day so we don't lose games
         max_date_saved = self._scoreboard_api.get_max_date_saved()
-        game_date = datetime.strptime(
-                max_date_saved.strftime(API_DATE_FMT), API_DATE_FMT
-            ) if max_date_saved is not None else nba_founded_datetime
-        # game_date = nba_founded_datetime
+        # game_date = datetime.strptime(
+        #        max_date_saved.strftime(API_DATE_FMT), API_DATE_FMT
+        #    ) if max_date_saved is not None else nba_founded_datetime
+        game_date = nba_founded_datetime
         days_processed = 0
 
         now_date = datetime.now().date()

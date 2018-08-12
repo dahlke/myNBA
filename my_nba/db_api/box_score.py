@@ -36,34 +36,12 @@ class BoxScoreApi(BaseApi):
 
         insert_query = '''
             INSERT INTO box_score VALUES (
-                %s,
-                %s,
-                "%s",
-                "%s",
-                %s,
-                "%s",
-                "%s",
-                "%s",
-                "%s",
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s
+                %s, %s, "%s", "%s", %s,
+                "%s", "%s", "%s", "%s", %s,
+                %s, %s, %s, %s, %s,
+                %s, %s, %s, %s, %s,
+                %s, %s, %s, %s, %s,
+                %s, %s, s%s
             );
         ''' % (
             game_id,

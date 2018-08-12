@@ -9,12 +9,7 @@ Download NBA stats data to your local machine for static analysis without rate l
 
 TODO:
     flake8
-    Get coaches
-    Get refs (stats-boxScoreSummary)
-    Get season start and end dates and work from those, or all dates in
-    each season
-    Is game_id not unique?
-    Get more data - from 1979 (Larry and Magic) on.
+    Get coaches & refs for games
 
 IDEAS:
     - All Time

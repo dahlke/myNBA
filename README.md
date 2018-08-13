@@ -12,18 +12,6 @@ TODO:
     Get coaches & refs for games
 
 IDEAS:
-    - All Time
-        - Top 10 rivalries all time
-            - Most games
-                - Regular season point differential
-                    - Home court advantage?
-                - Change over time?
-            - Most playoff games
-                - Playoff point differential
-                    - Home court advantage?
-                - Change over time?
-            - Players involved in those games
-            - Biggest playoffs player
     - By Season
         - Players with the biggest point differentials against each other
     - By Decade

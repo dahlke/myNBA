@@ -40,6 +40,7 @@ if __name__ == "__main__":
         description="Download NBA data for analysis"
     )
     parser.add_argument(
+
         "-p", "--players",
         action="store_true",
         help="Download NBA player data"
@@ -79,4 +80,5 @@ if __name__ == "__main__":
         prog = MyNBA(args)
     except KeyboardInterrupt:
         print("MyNBA program interrupted, terminating...")
+
     print("MyNBA program terminated.")

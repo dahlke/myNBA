@@ -13,9 +13,13 @@ class TeamDownloader(BaseDownloader):
         self._team_api = TeamApi()
 
     def download(self):
+        print("neilio 1")
         team_rows = json.loads(self._client.team_years({}))["resultSets"][0]["rowSet"]
+        print("neilio 2")
 
+        print(team_rows)
         for i, team_row in enumerate(team_rows):
+            print("neil", team_row)
             progress(i, len(team_rows), "Downloading teams...")
             team_id = team_row[1]
             team_exists = self._team_api.check_team_exists(team_id)

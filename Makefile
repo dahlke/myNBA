@@ -25,3 +25,7 @@ logs:
 .PHONY: todo
 todo:
 	@ag "TODO" --ignore Makefile
+
+.PHONY: notebook
+notebook:
+	jupyter notebook

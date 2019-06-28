@@ -1,4 +1,3 @@
-import my_nba.util.memsql_conn as memsql
 from my_nba.db_api.base import BaseApi
 
 
@@ -7,15 +6,6 @@ class TeamApi(BaseApi):
 
     def check_team_exists(self, team_id):
         num_team_matches = 0
-
-        with memsql.get_connection() as conn:
-            try:
-                num_team_matches = len(
-                    conn.query('SELECT * FROM team WHERE id = %d' % team_id)
-                )
-            except Exception as e:
-                self._logger.error(e)
-
         return num_team_matches > 0
 
 
@@ -67,9 +57,3 @@ class TeamApi(BaseApi):
             team_min_year,
             team_max_year
         )
-
-        with memsql.get_connection() as conn:
-            try:
-                conn.execute(insert_query)
-            except Exception as e:
-                self._logger.error(e)

@@ -1,4 +1,3 @@
-import my_nba.util.memsql_conn as memsql
 from my_nba.db_api.base import BaseApi
 
 
@@ -33,51 +32,3 @@ class BoxScoreApi(BaseApi):
         pf = box_score_row[25] if box_score_row[25] is not None else "NULL"
         pts = box_score_row[26] if box_score_row[26] is not None else "NULL"
         plus_minus = box_score_row[27] if box_score_row[27] is not None else "NULL"
-
-        insert_query = '''
-            INSERT INTO box_score VALUES (
-                %s, %s, "%s", "%s", %s,
-                "%s", "%s", "%s", "%s", %s,
-                %s, %s, %s, %s, %s,
-                %s, %s, %s, %s, %s,
-                %s, %s, %s, %s, %s,
-                %s, %s, s%s
-            );
-        ''' % (
-            game_id,
-            team_id,
-            team_abbreviation,
-            team_city,
-            player_id,
-            player_name,
-            start_position,
-            comment,
-            minutes,
-            fgm,
-            fga,
-            fg_pct,
-            fg3m,
-            fg3a,
-            fg3_pct,
-            ftm,
-            fta,
-            ft_pct,
-            oreb,
-            dreb,
-            reb,
-            ast,
-            stl,
-            blk,
-            to,
-            pf,
-            pts,
-            plus_minus
-        )
-
-        with memsql.get_connection() as conn:
-            try:
-                conn.execute(insert_query)
-                self._logger.debug("Box Score for Game ID %s, Team ID %s saved" % (game_id, team_id))
-            except Exception as e:
-                self._logger.debug("Box Score Insert Query: ", insert_query)
-                self._logger.error(e)

@@ -1,4 +1,3 @@
-import my_nba.util.memsql_conn as memsql
 from my_nba.db_api.base import BaseApi
 
 
@@ -6,13 +5,7 @@ class PlayerApi(BaseApi):
 
 
     def check_player_exists(self, player_id):
-        num_player_matches = 0
-        with memsql.get_connection() as conn:
-            num_player_matches = len(
-                conn.query('SELECT * FROM player WHERE id = %d' % player_id)
-            )
-        return num_player_matches > 0
-
+        return False
 
     def insert_player(self, player_row):
         player_id = player_row[0]
@@ -60,14 +53,3 @@ class PlayerApi(BaseApi):
             player_position, player_from_year, player_to_year, player_dleague_flag,
             player_draft_year, player_draft_round, player_draft_number
         )
-
-        with memsql.get_connection() as conn:
-            try:
-                conn.execute(insert_query)
-                self._logger.info(
-                    "%s %s saved." %
-                    (player_first_name, player_last_name)
-                )
-            except Exception as e:
-                self._logger.error(insert_query)
-                raise(e)

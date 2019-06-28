@@ -10,6 +10,7 @@ Download NBA stats data to your local machine for static analysis without rate l
 TODO:
     flake8
     Get coaches & refs for games
+    Run a check that makes sure every team has enough games per season. 
 
 IDEAS:
     - By Season

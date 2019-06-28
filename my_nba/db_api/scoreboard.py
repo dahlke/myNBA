@@ -1,4 +1,3 @@
-import my_nba.util.memsql_conn as memsql
 from my_nba.db_api.base import BaseApi
 
 
@@ -6,23 +5,11 @@ class ScoreboardApi(BaseApi):
 
     def get_max_date_saved(self):
         max_date = None
-
-        with memsql.get_connection() as conn:
-            max_game_date_rows = conn.query('SELECT MAX(game_date) max_date FROM game_header')
-            max_date = max_game_date_rows[0]['max_date']
-
         return max_date
 
     def check_game_header_exists(self, game_date):
         num_game_header_matches = 0
-        game_date_db_fmt = game_date.strftime('%Y-%m-%d')
-
-        with memsql.get_connection() as conn:
-            num_game_header_matches = len(
-                conn.query('SELECT * FROM game_header WHERE game_date = "%s"' % game_date_db_fmt)
-            )
         return num_game_header_matches > 0
-
 
     def insert_game_header(self, game_header_row):
         game_date = game_header_row[0]
@@ -50,14 +37,6 @@ class ScoreboardApi(BaseApi):
             natl_tv_broadcaster_abbreviation
         )
 
-        with memsql.get_connection() as conn:
-            try:
-                conn.execute(insert_query)
-                self._logger.debug('Game Header for Game ID %s saved.' % (game_id))
-            except Exception as e:
-                self._logger.debug('Game Header insert query:', insert_query)
-                self._logger.error(e)
-                # TODO: raise(e)
 
     def insert_line_score(self, line_score_row):
         # game_date = line_score_row[0]
@@ -106,12 +85,3 @@ class ScoreboardApi(BaseApi):
             pts, fg_pct, pg3_pct, ft_pct,
             ast, reb, tov
         )
-
-        with memsql.get_connection() as conn:
-            try:
-                conn.execute(insert_query)
-                self._logger.debug('Line Score for Game ID %s saved.' % (game_id))
-            except Exception as e:
-                self._logger.debug('Line Score insert query:', insert_query)
-                self._logger.error(e)
-                # TODO: raise(e)
